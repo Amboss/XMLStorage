@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CATALOG>
+    <CD>
+        <TITLE>Test</TITLE>
+        <ARTIST>Test Artist</ARTIST>
+        <COUNTRY>Test Country</COUNTRY>
+        <COMPANY>Test Company</COMPANY>
+        <PRICE>11.00</PRICE>
+        <YEAR>1971</YEAR>
+    </CD>
+</CATALOG>
