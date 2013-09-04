@@ -4,6 +4,8 @@ import XMLStorage.logic.service.CDService;
 import XMLStorage.model.CDModel;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Class handel's CDModel functionality
  */
@@ -38,7 +40,7 @@ public class CDServiceImpl implements CDService {
      * @return DCModel entity
      */
     @Override
-    public CDModel getCDModel() {
+    public List<CDModel> getCDModel() {
         return null;
     }
 }

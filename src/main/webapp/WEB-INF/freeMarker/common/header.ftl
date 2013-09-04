@@ -36,3 +36,8 @@
             Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">
             install Google Chrome Frame</a> to better experience this site.</p>
         <![endif]-->
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar">
+                <#include "header/header_menu.ftl">
+            </div><!-- /.navbar-inner -->
+        </div><!-- /.navbar navbar-inverse -->

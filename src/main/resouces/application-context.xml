@@ -11,8 +11,7 @@
             http://www.springframework.org/schema/context
             http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
-    <!-- Activates annotations scan, declares support for all the general annotations
-        like @Autowired, @Resource, @Required, @PostConstruct-->
+    <!-- Activates annotations scan -->
     <context:annotation-config/>
 
     <!-- Scans for annotated components in base-package -->
@@ -20,6 +19,7 @@
 
     <!-- Spring modules -->
     <import resource="classpath:/spring/spring-logging.xml"/>
+    <import resource="classpath:/spring/spring-multipart.xml"/>
     <import resource="classpath:/spring/spring-mvc.xml"/>
 
 </beans>

@@ -13,17 +13,17 @@ public class CDModel implements Serializable {
 
     private String country;
 
-    private String compony;
+    private String company;
 
     private double price;
 
     private Integer year;
 
-    public CDModel(String title, String artist, String country, String compony, double price, Integer year) {
+    public CDModel(String title, String artist, String country, String company, double price, Integer year) {
         this.title = title;
         this.artist = artist;
         this.country = country;
-        this.compony = compony;
+        this.company = company;
         this.price = price;
         this.year = year;
     }
@@ -52,12 +52,12 @@ public class CDModel implements Serializable {
         this.country = country;
     }
 
-    public String getCompony() {
-        return compony;
+    public String getCompany() {
+        return company;
     }
 
-    public void setCompony(String compony) {
-        this.compony = compony;
+    public void setCompany(String company) {
+        this.company = company;
     }
 
     public double getPrice() {
@@ -82,7 +82,7 @@ public class CDModel implements Serializable {
                 "title='" + title + '\'' +
                 ", artist='" + artist + '\'' +
                 ", country='" + country + '\'' +
-                ", compony='" + compony + '\'' +
+                ", company='" + company + '\'' +
                 ", price=" + price +
                 ", year=" + year +
                 '}';

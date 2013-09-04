@@ -2,6 +2,8 @@ package XMLStorage.logic.service;
 
 import XMLStorage.model.CDModel;
 
+import java.util.List;
+
 /**
  * Interface for CDModel functionality
  */
@@ -25,5 +27,5 @@ public interface CDService {
     /**
      * @return DCModel entity
      */
-    public CDModel getCDModel();
+    public List<CDModel> getCDModel();
 }

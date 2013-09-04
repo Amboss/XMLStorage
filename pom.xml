@@ -47,6 +47,9 @@
         <antlr.version>2.7.7</antlr.version>
         <dom4j.version>1.6.1</dom4j.version>
 
+        <!-- Spring's multipart dependencies -->
+        <fileupload.version>1.3</fileupload.version>
+        <commons-io.version>2.4</commons-io.version>
 	</properties>
 
 	<dependencies>
@@ -161,7 +164,6 @@
 			<scope>runtime</scope>
 		</dependency>
 
-
         <!-- Logging dependencies -->
         <dependency>
             <groupId>log4j</groupId>
@@ -208,6 +210,18 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- Spring's multipart dependencies -->
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>${fileupload.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
+        </dependency>
+
 	</dependencies>
 
 	<build>
@@ -227,7 +241,6 @@
                 <artifactId>maven-jetty-plugin</artifactId>
                 <version>6.1.26</version>
                 <configuration>
-                    <!--<jettyEnvXml>src/main/resources/jetty/jetty-env.xml</jettyEnvXml>-->
                     <scanIntervalSeconds>10</scanIntervalSeconds>
                     <stopKey>foo</stopKey>
                     <stopPort>9999</stopPort>
