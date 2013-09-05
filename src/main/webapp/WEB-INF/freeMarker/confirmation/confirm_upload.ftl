@@ -1,10 +1,10 @@
 <#-- ==============================================================
-     CONFIRMATION page
+     UPLOAD confirmation alert
      ============================================================== -->
 
  <#import "/util/spring.ftl" as spring />
 
- <#import "/layout/default.ftl" as com />
+ <#import "/layout/common.ftl" as com />
 
  <#assign pageTitle=confirm.label />
  <#assign messageTitle=confirm.message />

@@ -19,6 +19,8 @@ public class CDModel implements Serializable {
 
     private Integer year;
 
+    public CDModel() {}
+
     public CDModel(String title, String artist, String country, String company, double price, Integer year) {
         this.title = title;
         this.artist = artist;

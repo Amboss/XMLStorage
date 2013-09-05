@@ -14,8 +14,8 @@ import javax.servlet.http.HttpServletResponse;
  * Controller handles upload confirmations
  */
 @Controller
-@RequestMapping("/confirm")
-public class ConfirmationController extends AbstractController{
+@RequestMapping("/confirm_upload")
+public class UploadConfirmController extends AbstractController{
 
     /**
      * @return confirmations/confirm page with upload success message
@@ -41,29 +41,7 @@ public class ConfirmationController extends AbstractController{
         return new ModelAndView("confirmation/confirm_alert", "confirm", confirm);
     }
 
-    /**
-     * @return confirmations/confirm page with download success message
-     */
-    @RequestMapping(value = "/download_success",method = RequestMethod.GET)
-    public ModelAndView loadDownloadSuccessPage() {
 
-        ConfirmMessage confirm = new ConfirmMessage();
-        confirm.setLabel("Download successful");
-        confirm.setMessage("Your download is successful!");
-        return new ModelAndView("confirmation/confirm_alert", "confirm", confirm);
-    }
-
-    /**
-     * @return confirmations/confirm page with download failed message
-     */
-    @RequestMapping(value = "/download_failed",method = RequestMethod.GET)
-    public ModelAndView loadDownloadFailedPage() {
-
-        ConfirmMessage confirm = new ConfirmMessage();
-        confirm.setLabel("Download failed");
-        confirm.setMessage("Your download is failed!");
-        return new ModelAndView("confirmation/confirm_alert", "confirm", confirm);
-    }
     /**
      * Action on button "Ok" pressed.
      *
@@ -72,7 +50,7 @@ public class ConfirmationController extends AbstractController{
     @RequestMapping(params = "ok", method = RequestMethod.POST)
     protected ModelAndView onSubmit(HttpServletRequest request,
                                     HttpServletResponse response) {
-        return new ModelAndView("redirect:/view");
+        return new ModelAndView("redirect:/upload_file");
     }
 
 

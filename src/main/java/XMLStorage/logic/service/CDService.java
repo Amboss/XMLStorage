@@ -10,22 +10,13 @@ import java.util.List;
 public interface CDService {
 
     /**
-     * Method to create CDModel entity
+     * Method to save CDModel
      */
-    public void create();
+    public void convertFromObjectToXML();
 
     /**
-     * Method to delete CDModel entity
+     * Method to load CDModel
      */
-    public void delete();
+    public List<CDModel> convertFromXMLToObject();
 
-    /**
-     * Method to edit CDModel entity
-     */
-    public void edit();
-
-    /**
-     * @return DCModel entity
-     */
-    public List<CDModel> getCDModel();
 }

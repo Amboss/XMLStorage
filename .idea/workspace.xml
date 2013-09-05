@@ -1,62 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f00caf2c-d764-4892-83fa-547e9a1d3f0a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/XMLStorage/controller/AbstractController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/XMLStorage/model/ConfirmMessage.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/XMLStorage/controller/confirms/ConfirmationController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/XMLStorage/util/CustomUtil.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/XMLStorage/util/impl/CustomUtilImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/XMLStorage/controller/pages/DownLoadController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/XMLStorage/controller/pages/HomeController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/XMLStorage/controller/pages/UploadController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/XMLStorage/logic/validation/UploadValidator.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/XMLStorage/model/UploadedItem.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/XMLStorage/controller/pages/ViewController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/confirmation/confirm_alert.ftl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/common/header_menu.ftl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/message/messages_en_US.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/message/messages_ru_RU.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/serge.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resouces/spring/spring-multipart.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/pages/upload.ftl" />
-      <change type="DELETED" beforePath="D:\JAVAprojects\WEBprojects\XMLStorage\src\main\java\XMLStorage\controller\DownLoadController.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\JAVAprojects\WEBprojects\XMLStorage\src\main\java\XMLStorage\controller\HomeController.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\JAVAprojects\WEBprojects\XMLStorage\src\main\java\XMLStorage\controller\UploadController.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\JAVAprojects\WEBprojects\XMLStorage\src\main\java\XMLStorage\controller\ViewController.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\JAVAprojects\WEBprojects\XMLStorage\src\main\webapp\WEB-INF\freeMarker\upload.ftl" afterPath="" />
+    <list default="true" id="f00caf2c-d764-4892-83fa-547e9a1d3f0a" name="Default" comment="creating ftl  and controllers for app&#10;creating validation functions&#10;creating configuration support">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/DT_bootstrap.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/XMLStorage/controller/confirms/DownloadConfirmController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/META-INF/MANIFEST.MF" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_oxm_3_2_4_RELEASE.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/bootstrap.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/confirmation/confirm_upload.ftl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/dataTables.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/jquery.i18n.properties.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/jquery.validate.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XMLStorage/model/CDModel.java" afterPath="$PROJECT_DIR$/src/main/java/XMLStorage/model/CDModel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XMLStorage/logic/service/CDService.java" afterPath="$PROJECT_DIR$/src/main/java/XMLStorage/logic/service/CDService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XMLStorage/logic/service/impl/CDServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/XMLStorage/logic/service/impl/CDServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XMLStorage/controller/pages/DownLoadController.java" afterPath="$PROJECT_DIR$/src/main/java/XMLStorage/controller/pages/DownLoadController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XMLStorage/controller/pages/HomeController.java" afterPath="$PROJECT_DIR$/src/main/java/XMLStorage/controller/pages/HomeController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XMLStorage/controller/pages/UploadController.java" afterPath="$PROJECT_DIR$/src/main/java/XMLStorage/controller/pages/UploadController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/XMLStorage/controller/pages/ViewController.java" afterPath="$PROJECT_DIR$/src/main/java/XMLStorage/controller/pages/ViewController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XMLStorage.iml" afterPath="$PROJECT_DIR$/XMLStorage.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resouces/application-context.xml" afterPath="$PROJECT_DIR$/src/main/resouces/application-context.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/common/footer.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/common/footer.ftl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/pages/download.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/pages/download.ftl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/common/header.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/common/header.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/common/header_menu.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/common/header_menu.ftl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/pages/index.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/pages/index.ftl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-servlet.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-servlet.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/pages/upload.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/pages/upload.ftl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/pages/view.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/pages/view.ftl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="D:\JAVAprojects\WEBprojects\XMLStorage\.idea\libraries\Maven__commons_fileupload_commons_fileupload_1_2_2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_fileupload_commons_fileupload_1_3.xml" />
-      <change type="MOVED" beforePath="D:\JAVAprojects\WEBprojects\XMLStorage\.idea\libraries\Maven__commons_io_commons_io_2_0_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_4.xml" />
-      <change type="MOVED" beforePath="D:\JAVAprojects\WEBprojects\XMLStorage\src\main\java\XMLStorage\storage\target.xml" afterPath="$PROJECT_DIR$/src/main/resouces/storage/target.xml" />
-      <change type="MOVED" beforePath="D:\JAVAprojects\WEBprojects\XMLStorage\src\main\webapp\WEB-INF\freeMarker\download.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/pages/download.ftl" />
-      <change type="MOVED" beforePath="D:\JAVAprojects\WEBprojects\XMLStorage\src\main\webapp\WEB-INF\freeMarker\index.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/pages/index.ftl" />
-      <change type="MOVED" beforePath="D:\JAVAprojects\WEBprojects\XMLStorage\src\main\webapp\WEB-INF\freeMarker\layout\default.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/layout/common.ftl" />
-      <change type="MOVED" beforePath="D:\JAVAprojects\WEBprojects\XMLStorage\src\main\webapp\WEB-INF\freeMarker\view.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/pages/view.ftl" />
+      <change type="MOVED" beforePath="D:\JAVAprojects\WEBprojects\XMLStorage\src\main\java\XMLStorage\controller\confirms\ConfirmationController.java" afterPath="$PROJECT_DIR$/src/main/java/XMLStorage/controller/confirms/UploadConfirmController.java" />
+      <change type="MOVED" beforePath="D:\JAVAprojects\WEBprojects\XMLStorage\src\main\resouces\application-context.xml" afterPath="$PROJECT_DIR$/src/main/resources/application-context.xml" />
+      <change type="MOVED" beforePath="D:\JAVAprojects\WEBprojects\XMLStorage\src\main\resouces\log4j.properties" afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" />
+      <change type="MOVED" beforePath="D:\JAVAprojects\WEBprojects\XMLStorage\src\main\resouces\spring\spring-logging.xml" afterPath="$PROJECT_DIR$/src/main/resources/spring/spring-logging.xml" />
+      <change type="MOVED" beforePath="D:\JAVAprojects\WEBprojects\XMLStorage\src\main\resouces\spring\spring-multipart.xml" afterPath="$PROJECT_DIR$/src/main/resources/spring/spring-multipart.xml" />
+      <change type="MOVED" beforePath="D:\JAVAprojects\WEBprojects\XMLStorage\src\main\resouces\spring\spring-mvc.xml" afterPath="$PROJECT_DIR$/src/main/resources/spring/spring-mvc.xml" />
+      <change type="MOVED" beforePath="D:\JAVAprojects\WEBprojects\XMLStorage\src\main\resouces\storage\target.xml" afterPath="$PROJECT_DIR$/target.xml" />
+      <change type="MOVED" beforePath="D:\JAVAprojects\WEBprojects\XMLStorage\src\main\webapp\WEB-INF\freeMarker\confirmation\confirm_alert.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/confirmation/confirm_download.ftl" />
+      <change type="MOVED" beforePath="D:\JAVAprojects\WEBprojects\XMLStorage\src\main\webapp\resources\css\DT_bootstrap.css" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/DT_bootstrap.css" />
+      <change type="MOVED" beforePath="D:\JAVAprojects\WEBprojects\XMLStorage\src\main\webapp\resources\css\bootstrap.css" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/bootstrap.css" />
+      <change type="MOVED" beforePath="D:\JAVAprojects\WEBprojects\XMLStorage\src\main\webapp\resources\css\dataTables.css" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/dataTables.css" />
+      <change type="MOVED" beforePath="D:\JAVAprojects\WEBprojects\XMLStorage\src\main\webapp\resources\img\Sorting icons.psd" afterPath="$PROJECT_DIR$/src/main/webapp/static/img/Sorting icons.psd" />
+      <change type="MOVED" beforePath="D:\JAVAprojects\WEBprojects\XMLStorage\src\main\webapp\resources\img\back_disabled.png" afterPath="$PROJECT_DIR$/src/main/webapp/static/img/back_disabled.png" />
+      <change type="MOVED" beforePath="D:\JAVAprojects\WEBprojects\XMLStorage\src\main\webapp\resources\img\back_enabled.png" afterPath="$PROJECT_DIR$/src/main/webapp/static/img/back_enabled.png" />
+      <change type="MOVED" beforePath="D:\JAVAprojects\WEBprojects\XMLStorage\src\main\webapp\resources\img\back_enabled_hover.png" afterPath="$PROJECT_DIR$/src/main/webapp/static/img/back_enabled_hover.png" />
+      <change type="MOVED" beforePath="D:\JAVAprojects\WEBprojects\XMLStorage\src\main\webapp\resources\img\favicon_02.ico" afterPath="$PROJECT_DIR$/src/main/webapp/static/img/favicon_02.ico" />
+      <change type="MOVED" beforePath="D:\JAVAprojects\WEBprojects\XMLStorage\src\main\webapp\resources\img\forward_disabled.png" afterPath="$PROJECT_DIR$/src/main/webapp/static/img/forward_disabled.png" />
+      <change type="MOVED" beforePath="D:\JAVAprojects\WEBprojects\XMLStorage\src\main\webapp\resources\img\forward_enabled.png" afterPath="$PROJECT_DIR$/src/main/webapp/static/img/forward_enabled.png" />
+      <change type="MOVED" beforePath="D:\JAVAprojects\WEBprojects\XMLStorage\src\main\webapp\resources\img\forward_enabled_hover.png" afterPath="$PROJECT_DIR$/src/main/webapp/static/img/forward_enabled_hover.png" />
+      <change type="MOVED" beforePath="D:\JAVAprojects\WEBprojects\XMLStorage\src\main\webapp\resources\img\glyphicons-halflings-white.png" afterPath="$PROJECT_DIR$/src/main/webapp/static/img/glyphicons-halflings-white.png" />
+      <change type="MOVED" beforePath="D:\JAVAprojects\WEBprojects\XMLStorage\src\main\webapp\resources\img\glyphicons-halflings.png" afterPath="$PROJECT_DIR$/src/main/webapp/static/img/glyphicons-halflings.png" />
+      <change type="MOVED" beforePath="D:\JAVAprojects\WEBprojects\XMLStorage\src\main\webapp\resources\img\header_default2.png" afterPath="$PROJECT_DIR$/src/main/webapp/static/img/header_default2.png" />
+      <change type="MOVED" beforePath="D:\JAVAprojects\WEBprojects\XMLStorage\src\main\webapp\resources\img\sort_asc.png" afterPath="$PROJECT_DIR$/src/main/webapp/static/img/sort_asc.png" />
+      <change type="MOVED" beforePath="D:\JAVAprojects\WEBprojects\XMLStorage\src\main\webapp\resources\img\sort_asc_disabled.png" afterPath="$PROJECT_DIR$/src/main/webapp/static/img/sort_asc_disabled.png" />
+      <change type="MOVED" beforePath="D:\JAVAprojects\WEBprojects\XMLStorage\src\main\webapp\resources\img\sort_both.png" afterPath="$PROJECT_DIR$/src/main/webapp/static/img/sort_both.png" />
+      <change type="MOVED" beforePath="D:\JAVAprojects\WEBprojects\XMLStorage\src\main\webapp\resources\img\sort_desc.png" afterPath="$PROJECT_DIR$/src/main/webapp/static/img/sort_desc.png" />
+      <change type="MOVED" beforePath="D:\JAVAprojects\WEBprojects\XMLStorage\src\main\webapp\resources\img\sort_desc_disabled.png" afterPath="$PROJECT_DIR$/src/main/webapp/static/img/sort_desc_disabled.png" />
     </list>
     <ignored path="XMLStorage.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378323541913" ignored="false" />
+    <file path="/Dummy.txt" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378417865359" ignored="false" />
     <file path="/CustomUtilImpl.java" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378295189806" ignored="false" />
-    <file path="/UploadController.java" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378308015848" ignored="false" />
+    <file path="/UploadController.java" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378388280720" ignored="false" />
     <file path="/spring-multipart.xml" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378307266460" ignored="false" />
-    <file path="/pom.xml" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378294895325" ignored="false" />
+    <file path="/pom.xml" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378396674120" ignored="false" />
     <file path="/FileUpload.java" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378307715675" ignored="false" />
     <file path="/CustomUtil.java" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378295137928" ignored="false" />
     <file path="/UploadValidator.java" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378308582250" ignored="false" />
     <file path="/target.xml" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378295429308" ignored="false" />
-    <file path="/DownLoadController.java" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378313649134" ignored="false" />
+    <file path="/DownLoadController.java" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378388727900" ignored="false" />
     <file path="/HomeController.java" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378300300800" ignored="false" />
     <file path="/uploadSeccessController.java" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378301510921" ignored="false" />
     <file path="/uploads_success.ftl" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378300841383" ignored="false" />
@@ -65,14 +76,14 @@
     <file path="/download_failed.ftl" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378326581760" ignored="false" />
     <file path="/UploadConfirmController.java" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378304203099" ignored="false" />
     <file path="/ViewController.java" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378304686383" ignored="false" />
-    <file path="/CDServiceImpl.java" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378304561738" ignored="false" />
+    <file path="/CDServiceImpl.java" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378416392487" ignored="false" />
     <file path="/messages_en_US.properties" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378306898322" ignored="false" />
     <file path="/messages_ru_RU.properties" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378307167029" ignored="false" />
     <file path="/header_menu.ftl" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378313741545" ignored="false" />
     <file path="/header.ftl" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378313127117" ignored="false" />
     <file path="/common.ftl" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378313844407" ignored="false" />
     <file path="$PROJECT_DIR$/../ServerMonitoring_2.0/src/main/webapp/WEB-INF/freemarker/common/footer.ftl" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378314665980" ignored="false" />
-    <file path="/index.ftl" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378316439423" ignored="false" />
+    <file path="/index.ftl" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378386921707" ignored="false" />
     <file path="/view.ftl" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378324924587" ignored="false" />
     <file path="/CDModel.java" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378324598089" ignored="false" />
     <file path="/upload.ftl" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378325551166" ignored="false" />
@@ -81,6 +92,16 @@
     <file path="/upload_success.ftl" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378327577381" ignored="false" />
     <file path="/ConfirmationController.java" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378327694467" ignored="false" />
     <file path="/ConfirmationMessage.java" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378326985120" ignored="false" />
+    <file path="/confirm_upload.ftl" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378387990574" ignored="false" />
+    <file path="/confirm_download.ftl" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378388012739" ignored="false" />
+    <file path="/fragment.java" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378388059963" ignored="false" />
+    <file path="/DownloadConfirmController.java" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378388655412" ignored="false" />
+    <file path="$PROJECT_DIR$/../exemples/OXMTest/settings.xml" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378395718147" ignored="false" />
+    <file path="$PROJECT_DIR$/../exemples/OXMTest/simplebean.xml" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378395924826" ignored="false" />
+    <file path="/spring-oxml.xml" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378396833673" ignored="false" />
+    <file path="/application-context.xml" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378396945201" ignored="false" />
+    <file path="/CDService.java" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378397467158" ignored="false" />
+    <file path="/mapping.xml" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378398484135" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,13 +161,13 @@
     <favorites_list name="XMLStorage" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
+    <splitter split-orientation="horizontal" split-proportion="0.4755639">
       <split-first>
         <leaf>
-          <file leaf-file-name="confirm_alert.ftl" pinned="false" current="true" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/confirmation/confirm_alert.ftl">
+          <file leaf-file-name="CDModel.java" pinned="false" current="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/java/XMLStorage/model/CDModel.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="27" column="78" selection-start="945" selection-end="945" vertical-scroll-proportion="0.5049505">
+                <state line="9" column="24" selection-start="173" selection-end="178" vertical-scroll-proportion="0.17075893">
                   <folding />
                 </state>
               </provider>
@@ -156,37 +177,10 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="index.ftl" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/pages/index.ftl">
+          <file leaf-file-name="CDServiceImpl.java" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/java/XMLStorage/logic/service/impl/CDServiceImpl.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="38" column="12" selection-start="1526" selection-end="1536" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="CDModel.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/XMLStorage/model/CDModel.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="3" column="0" selection-start="56" selection-end="56" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="upload.ftl" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/pages/upload.ftl">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="20" column="8" selection-start="797" selection-end="797" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="ConfirmationController.java" pinned="false" current="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main/java/XMLStorage/controller/confirms/ConfirmationController.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="56" column="87" selection-start="2069" selection-end="2069" vertical-scroll-proportion="0.4389439">
+                <state line="51" column="49" selection-start="1631" selection-end="1631" vertical-scroll-proportion="0.7293729">
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -214,22 +208,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/common/footer.ftl" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/pages/index.ftl" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/confirmation/confirm_download.ftl" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/confirmation/confirm_upload.ftl" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/common/header.ftl" />
+        <option value="$PROJECT_DIR$/src/main/java/XMLStorage/controller/confirms/DownloadConfirmController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/XMLStorage/controller/confirms/UploadConfirmController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/XMLStorage/controller/pages/UploadController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/XMLStorage/controller/pages/DownLoadController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/spring/spring-mvc.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/storage/mapping.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/spring/spring-oxml.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/application-context.xml" />
         <option value="$PROJECT_DIR$/src/main/java/XMLStorage/model/CDModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/XMLStorage/logic/service/CDService.java" />
         <option value="$PROJECT_DIR$/src/main/java/XMLStorage/controller/pages/ViewController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/pages/view.ftl" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/pages/upload.ftl" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/pages/download.ftl" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/confirmations/download_failed.ftl" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/confirmations/download_success.ftl" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/confirmations/upload_failed.ftl" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/confirmations/upload_success.ftl" />
-        <option value="$PROJECT_DIR$/src/main/java/XMLStorage/model/ConfirmationMessage.java" />
-        <option value="$PROJECT_DIR$/src/main/java/XMLStorage/model/UploadedItem.java" />
-        <option value="$PROJECT_DIR$/src/main/java/XMLStorage/model/ConfirmMessage.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/confirmations/confirm.ftl" />
-        <option value="$PROJECT_DIR$/src/main/java/XMLStorage/controller/confirms/ConfirmationController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/XMLStorage/logic/service/impl/CDServiceImpl.java" />
       </list>
     </option>
   </component>
@@ -239,6 +233,52 @@
         <option name="importAutomatically" value="true" />
       </MavenImportingSettings>
     </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="XMLStorage" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="XMLStorage" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Plugins" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$PluginsNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="jetty" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$PluginNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="XMLStorage" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Plugins" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$PluginsNode" />
+        </PATH_ELEMENT>
+      </PATH>
+    </treeState>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
@@ -272,6 +312,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -561,6 +602,114 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="XMLStorage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="XMLStorage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="XMLStorage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="XMLStorage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="XMLStorage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="XMLStorage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="META-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="XMLStorage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="XMLStorage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -583,55 +732,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="resouces" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="XMLStorage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="XMLStorage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resouces" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="storage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="XMLStorage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="XMLStorage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resouces" />
+              <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -939,28 +1040,37 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="OverrideImplement.combined" value="true" />
-    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
     <property name="MemberChooser.sorted" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../exemples/OXMTest" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="FullScreen" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
+    <property name="dynamic.classpath" value="false" />
     <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="MemberChooser.copyJavadoc" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="XMLStorage.controller.confirms" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\JAVAprojects\WEBprojects\XMLStorage\src\main\webapp\static\js" />
+      <recent name="D:\JAVAprojects\WEBprojects\XMLStorage\src\main\webapp" />
+      <recent name="D:\JAVAprojects\WEBprojects\XMLStorage\src\main\webapp\WEB-INF\freeMarker\confirmation" />
       <recent name="D:\JAVAprojects\WEBprojects\XMLStorage\src\main\webapp\WEB-INF" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\JAVAprojects\WEBprojects\XMLStorage" />
+      <recent name="D:\JAVAprojects\WEBprojects\XMLStorage\src\main\webapp\WEB-INF" />
       <recent name="D:\JAVAprojects\WEBprojects\XMLStorage\src\main\webapp\WEB-INF\freeMarker\pages" />
       <recent name="D:\JAVAprojects\WEBprojects\XMLStorage\src\main\resouces" />
     </key>
@@ -972,25 +1082,34 @@
       <option name="PROGRAM_PARAMETERS" />
       <method />
     </configuration>
+    <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list />
+            </option>
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method />
+    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -1018,6 +1137,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -1084,6 +1216,11 @@
       <created>1378249960065</created>
       <updated>1378249960065</updated>
     </task>
+    <task id="LOCAL-00001" summary="creating ftl  and controllers for app&#10;creating validation functions&#10;creating configuration support">
+      <created>1378327987128</created>
+      <updated>1378327987128</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1092,7 +1229,7 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32941177" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1101,12 +1238,13 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14834578" sideWeight="0.32941177" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14834578" sideWeight="0.67058825" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="FLOATING" visible="false" weight="0.32977587" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="2060" y="44" width="991" height="994" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1153,7 +1291,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" />
+    <option name="LAST_COMMIT_MESSAGE" value="creating ftl  and controllers for app&#10;creating validation functions&#10;creating configuration support" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1167,6 +1305,7 @@
     <option name="UPDATE_FILTER_BY_SCOPE" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
+    <MESSAGE value="creating ftl  and controllers for app&#10;creating validation functions&#10;creating configuration support" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1176,39 +1315,95 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/XMLStorage/controller/confirms/UploadConfirmController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="32" selection-start="534" selection-end="548" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/META-INF/MANIFEST.MF">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/bootstrap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/common/header.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="83" selection-start="1073" selection-end="1073" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/XMLStorage/controller/pages/DownLoadController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="67" selection-start="829" selection-end="829" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spring/spring-mvc.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="45" selection-start="276" selection-end="276" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="238" column="71" selection-start="8519" selection-end="8519" vertical-scroll-proportion="0.43657142">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spring/spring-multipart.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="58" selection-start="1099" selection-end="1099" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/XMLStorage/controller/confirms/DownloadConfirmController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="34" selection-start="534" selection-end="550" vertical-scroll-proportion="0.14961496">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/XMLStorage/controller/pages/UploadController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="32" selection-start="1801" selection-end="1809" vertical-scroll-proportion="0.78547853">
+        <state line="82" column="61" selection-start="2780" selection-end="2780" vertical-scroll-proportion="0.7293729">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/layout/common.ftl">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application-context.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="30" selection-start="353" selection-end="353" vertical-scroll-proportion="0.16831683">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/common/footer.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="55" selection-start="1000" selection-end="1000" vertical-scroll-proportion="0.5236524">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/pages/index.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="12" selection-start="1526" selection-end="1536" vertical-scroll-proportion="0.0">
+        <state line="22" column="57" selection-start="1254" selection-end="1254" vertical-scroll-proportion="0.4174107">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/XMLStorage/controller/pages/ViewController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="52" selection-start="1050" selection-end="1059" vertical-scroll-proportion="0.0">
+        <state line="35" column="64" selection-start="1015" selection-end="1015" vertical-scroll-proportion="0.4862486">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/XMLStorage/logic/service/CDService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="17" selection-start="157" selection-end="157" vertical-scroll-proportion="0.16831683">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1217,61 +1412,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/XMLStorage/model/CDModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="56" selection-end="56" vertical-scroll-proportion="0.0">
+        <state line="9" column="24" selection-start="173" selection-end="178" vertical-scroll-proportion="0.17075893">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/pages/download.ftl">
+    <entry file="file://$PROJECT_DIR$/src/main/java/XMLStorage/logic/service/impl/CDServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="41" selection-start="737" selection-end="737" vertical-scroll-proportion="0.35533553">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/pages/upload.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="8" selection-start="797" selection-end="797" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/XMLStorage/model/UploadedItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="28" selection-start="320" selection-end="320" vertical-scroll-proportion="0.2431243">
+        <state line="51" column="49" selection-start="1631" selection-end="1631" vertical-scroll-proportion="0.7293729">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/pages/view.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="81" selection-start="473" selection-end="473" vertical-scroll-proportion="0.29922992">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/XMLStorage/model/ConfirmMessage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="24" selection-start="117" selection-end="122" vertical-scroll-proportion="0.1309131">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/XMLStorage/controller/confirms/ConfirmationController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="87" selection-start="2069" selection-end="2069" vertical-scroll-proportion="0.4389439">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/confirmation/confirm_alert.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="78" selection-start="945" selection-end="945" vertical-scroll-proportion="0.5049505">
-          <folding />
         </state>
       </provider>
     </entry>

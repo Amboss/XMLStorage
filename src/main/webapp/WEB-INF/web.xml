@@ -13,6 +13,14 @@ Server Monitoring Service WEB configurations
         <welcome-file>index.ftl</welcome-file>
     </welcome-file-list>
 
+    <!-- ===================== Spring MVC configurations ========================================= -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            classpath:application-context.xml
+        </param-value>
+    </context-param>
+
     <!-- ===================== Dispatcher Servlet configurations ================================= -->
 	<servlet>
 		<servlet-name>SpringDispatcher</servlet-name>

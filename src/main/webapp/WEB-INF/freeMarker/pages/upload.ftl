@@ -3,9 +3,9 @@
      ============================================================== -->
 <#import "/util/spring.ftl" as spring />
 
-<#import "/layout/default.ftl" as com />
+<#import "/layout/common.ftl" as com />
 
-<#assign pageTitle>Upload</#assign>
+<#assign pageTitle="Upload"/>
 
 <@com.page title="${pageTitle}">
     <div class="row-fluid">
@@ -15,8 +15,8 @@
             <div class="control-group info">
                 <label class="control-label" for="server_name">File to upload:</label>
                 <div class="controls">
-                    <@spring.formInput "file", "input-xlarge" />
-                    <@spring.showErrors " ", "alert alert-error"/>
+                    <#--@spring.formInput "", "input-xlarge" /-->
+                    <#--@spring.showErrors " ", "alert alert-error"/-->
                 </div>
             </div>
             <div class="control-group">

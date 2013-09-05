@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
  * Controller handles home page functionality
  */
 @Controller
-@RequestMapping("/home")
+@RequestMapping("/index")
 public class HomeController extends AbstractController {
 
     /**
@@ -21,6 +21,6 @@ public class HomeController extends AbstractController {
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView loadHomePage() {
 
-        return new ModelAndView("upload");
+        return new ModelAndView("pages/index");
     }
 }

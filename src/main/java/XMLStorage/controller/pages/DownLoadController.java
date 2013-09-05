@@ -2,6 +2,7 @@ package XMLStorage.controller.pages;
 
 import XMLStorage.controller.AbstractController;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -17,9 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 public class DownLoadController extends AbstractController {
 
     /**
-     * Retrieving freeMarker/download.ftl template
-     *
-     * @return upload page
+     * @return download page
      */
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView loadUploadPage() {
@@ -28,11 +27,15 @@ public class DownLoadController extends AbstractController {
     }
 
     /**
-     * download
+     * Handel's download action
      */
     @RequestMapping(method = RequestMethod.POST)
     public ModelAndView onSubmit(HttpServletRequest request,
-                                 HttpServletResponse response) throws Exception {
+                                 HttpServletResponse response,
+                                 BindingResult errors) throws Exception {
+
+        if (!errors.hasErrors()) {
+
 //        int id = ServletRequestUtils.getRequiredIntParameter(request, "id");
 //
 //        Files file = this.filesService.find(id);
@@ -43,9 +46,9 @@ public class DownLoadController extends AbstractController {
 //
 //        FileCopyUtils.copy(file.getFile(), response.getOutputStream());
 
-        return null;
-
+            return new ModelAndView("redirect:/confirm_download/download_success");
+        } else {
+            return new ModelAndView("redirect:/confirm_download/download_failed");
+        }
     }
-
-
 }

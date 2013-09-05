@@ -78,10 +78,10 @@ public class UploadController extends AbstractController {
 //                e.printStackTrace();
 //                return "File uploaded failed:" + orgName;
 //            }
+            return new ModelAndView("redirect:/confirm_upload/upload_success");
         } else {
-            loadUploadPage();
+            return new ModelAndView("redirect:/confirm_upload/upload_failed");
         }
-        return null;
     }
 
 

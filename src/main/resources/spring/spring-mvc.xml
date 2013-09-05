@@ -2,7 +2,6 @@
 <!-- ==================================================================================================
         Spring MVC DispatcherServlet application context for Server Monitoring web tier
             - annotation driven configuration
-            - interceptors configuration
      ================================================================================================== -->
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -22,22 +21,9 @@
     <mvc:annotation-driven />
 
     <!--
-       Ensures that dispatcher servlet can be mapped to '/' and that static resources
-       are still served by the containers default servlet. Requires Spring Framework
-       3.0 or higher.
-    -->
-    <!--<mvc:default-servlet-handler/>-->
-
-    <!--
       Configures the location of static resources such as css files.
       Requires Spring Framework 3.0 or higher.
    -->
     <mvc:resources mapping="/static/**" location="/static/"/>
 
-    <!-- Configures Handler Interceptors -->
-    <mvc:interceptors>
-        <bean id="localeChangeInterceptor"
-              class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"
-              p:paramName="lang"/>
-    </mvc:interceptors>
 </beans>

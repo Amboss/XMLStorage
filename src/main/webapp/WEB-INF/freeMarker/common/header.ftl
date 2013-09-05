@@ -1,7 +1,7 @@
 <#-- ==============================================================
      HEADER part of common layout
      ============================================================== -->
-
+<#import "/util/spring.ftl" as spring />
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
      "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
@@ -38,6 +38,6 @@
         <![endif]-->
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar">
-                <#include "header/header_menu.ftl">
+                <#include "header_menu.ftl">
             </div><!-- /.navbar-inner -->
         </div><!-- /.navbar navbar-inverse -->
