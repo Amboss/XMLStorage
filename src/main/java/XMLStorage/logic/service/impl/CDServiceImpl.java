@@ -10,8 +10,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStream;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Class handel's CDModel functionality
@@ -24,37 +26,44 @@ public class CDServiceImpl implements CDService {
     /**
      * Method to save Object to XML file
      */
-    public void convertFromObjectToXML() {
+    public void convertFromObjectToXML(String fileName,
+                                       String rootElement,
+                                       Map<String, String> elementsMap) {
 
         // Create a XMLOutputFactory
-        XMLOutputFactory outputFactory = XMLOutputFactory.newInstance();
-        // Create XMLEventWriter
-        XMLEventWriter eventWriter = null;
+        XMLOutputFactory xmlOutputFactory = XMLOutputFactory.newInstance();
 
         try {
 
-            eventWriter = outputFactory.createXMLEventWriter(new FileOutputStream(FILE_NAME));
+            XMLEventWriter xmlEventWriter = xmlOutputFactory.createXMLEventWriter(
+                    new FileOutputStream(fileName), "UTF-8");
 
             // Create a EventFactory
             XMLEventFactory eventFactory = XMLEventFactory.newInstance();
+
             XMLEvent end = eventFactory.createDTD("\n");
 
-            // Create and write Start Tag
             StartDocument startDocument = eventFactory.createStartDocument();
-            eventWriter.add(startDocument);
 
-            // Create config open tag
-            StartElement configStartElement = eventFactory.createStartElement("", "", "cd");
-            eventWriter.add(configStartElement);
-            eventWriter.add(end);
+            xmlEventWriter.add(startDocument);
+            xmlEventWriter.add(end);
 
-            // Write the different nodes
-            createNode(eventWriter, "title", "");
+            StartElement configStartElement = eventFactory.createStartElement("", "", rootElement);
 
-            eventWriter.add(eventFactory.createEndElement("", "", "cd"));
-            eventWriter.add(end);
-            eventWriter.add(eventFactory.createEndDocument());
-            eventWriter.close();
+            xmlEventWriter.add(configStartElement);
+            xmlEventWriter.add(end);
+
+            // Write the element nodes
+            Set<String> elementNodes = elementsMap.keySet();
+
+            for(String key : elementNodes){
+                createNode(xmlEventWriter, key, elementsMap.get(key));
+            }
+
+            xmlEventWriter.add(eventFactory.createEndElement("", "", rootElement));
+            xmlEventWriter.add(end);
+            xmlEventWriter.add(eventFactory.createEndDocument());
+            xmlEventWriter.close();
 
         } catch (XMLStreamException | FileNotFoundException e) {
             e.printStackTrace();
@@ -67,25 +76,24 @@ public class CDServiceImpl implements CDService {
      * functionality to format the XML file automatically.
      * @throws XMLStreamException
      */
-    private void createNode(XMLEventWriter eventWriter, String name,
-                            String value) throws XMLStreamException {
+    private static void createNode(XMLEventWriter eventWriter, String element,
+                                   String value) throws XMLStreamException {
 
-        XMLEventFactory eventFactory = XMLEventFactory.newInstance();
+        XMLEventFactory xmlEventFactory = XMLEventFactory.newInstance();
+        XMLEvent end = xmlEventFactory.createDTD("\n");
+        XMLEvent tab = xmlEventFactory.createDTD("\t");
 
-        XMLEvent end = eventFactory.createDTD("\n");
-        XMLEvent tab = eventFactory.createDTD("\t");
-
-        // Create Start node
-        StartElement sElement = eventFactory.createStartElement("", "", name);
+        //Create Start node
+        StartElement sElement = xmlEventFactory.createStartElement("", "", element);
         eventWriter.add(tab);
         eventWriter.add(sElement);
 
-        // Create Content
-        Characters characters = eventFactory.createCharacters(value);
+        //Create Content
+        Characters characters = xmlEventFactory.createCharacters(value);
         eventWriter.add(characters);
 
         // Create End node
-        EndElement eElement = eventFactory.createEndElement("", "", name);
+        EndElement eElement = xmlEventFactory.createEndElement("", "", element);
         eventWriter.add(eElement);
         eventWriter.add(end);
     }
@@ -99,7 +107,7 @@ public class CDServiceImpl implements CDService {
     @SuppressWarnings("unchecked")
     public List<CDModel> convertFromXMLToObject() {
 
-        List<CDModel> items = new LinkedList<>();
+        List<CDModel> items = new ArrayList<>();
 
         try {
             //create xml reader event with input stream

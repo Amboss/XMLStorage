@@ -9,12 +9,23 @@ import java.io.Serializable;
  */
 public class UploadedItem implements Serializable {
 
+    private String name;
+
     private CommonsMultipartFile multipartFile;
 
     public UploadedItem() {}
 
-    public UploadedItem(CommonsMultipartFile multipartFile) {
+    public UploadedItem(String name, CommonsMultipartFile multipartFile) {
+        this.name = name;
         this.multipartFile = multipartFile;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public CommonsMultipartFile getMultipartFile() {
@@ -23,5 +34,13 @@ public class UploadedItem implements Serializable {
 
     public void setMultipartFile(CommonsMultipartFile multipartFile) {
         this.multipartFile = multipartFile;
+    }
+
+    @Override
+    public String toString() {
+        return "UploadedItem{" +
+                "name='" + name + '\'' +
+                ", multipartFile=" + multipartFile +
+                '}';
     }
 }
