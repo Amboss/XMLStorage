@@ -12,9 +12,7 @@
         <h2>${pageTitle}</h2>
         <hr></br>
 
-        <table cellpadding="0"
-                cellspacing="0"
-                border="0"
+        <table cellpadding="0" cellspacing="0" border="0"
                 class="table table-striped table-bordered">
             <thead>
                 <tr>
@@ -26,19 +24,29 @@
                     <th>Year</th>
                 </tr>
             </thead>
-            <#list modelList as list >
-                <tbody>
+            <tbody>
+                <#if modelList?has_content>
+                    <#list modelList as list>
+                        <tr>
+                            <td>${list.title}</td>
+                            <td>${list.artist}</td>
+                            <td>${list.country}</td>
+                            <td>${list.company}</td>
+                            <td>${list.price}</td>
+                            <td>${list.year}</td>
+                        </tr>
+                    </#list>
+                <#else>
                     <tr>
-                        <td>${list.title}</td>
-                        <td>${list.artist}</td>
-                        <td>${list.country}</td>
-                        <td>${list.company}</td>
-                        <td>${list.price}</td>
-                        <td>${list.year}</td>
+                        <td>- - -</td>
+                        <td>- - -</td>
+                        <td>- - -</td>
+                        <td>- - -</td>
+                        <td>- - -</td>
+                        <td>- - -</td>
                     </tr>
-                </tbody>
-            </#list>
+                </#if>
+            </tbody>
         </table>
-        </br><hr>
     </div>
 </@com.page>

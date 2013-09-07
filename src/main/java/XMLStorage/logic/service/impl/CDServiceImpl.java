@@ -2,14 +2,13 @@ package XMLStorage.logic.service.impl;
 
 import XMLStorage.logic.service.CDService;
 import XMLStorage.model.CDModel;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
 import javax.xml.stream.*;
 import javax.xml.stream.events.*;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.InputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -21,7 +20,8 @@ import java.util.Set;
 @Service("CDServiceImpl")
 public class CDServiceImpl implements CDService {
 
-    private static final String FILE_NAME = "target.xml";
+    private Resource myData = new ClassPathResource("/storage/target.xml");
+
 
     /**
      * Method to save Object to XML file
@@ -56,7 +56,7 @@ public class CDServiceImpl implements CDService {
             // Write the element nodes
             Set<String> elementNodes = elementsMap.keySet();
 
-            for(String key : elementNodes){
+            for (String key : elementNodes) {
                 createNode(xmlEventWriter, key, elementsMap.get(key));
             }
 
@@ -71,9 +71,9 @@ public class CDServiceImpl implements CDService {
     }
 
     /**
-     *
      * Adding end-of-lines and tab information to your XML file to provide
      * functionality to format the XML file automatically.
+     *
      * @throws XMLStreamException
      */
     private static void createNode(XMLEventWriter eventWriter, String element,
@@ -107,75 +107,72 @@ public class CDServiceImpl implements CDService {
     @SuppressWarnings("unchecked")
     public List<CDModel> convertFromXMLToObject() {
 
-        List<CDModel> items = new ArrayList<>();
+        List<CDModel> cdModelList = new ArrayList<>();
 
+        CDModel cdModel = null;
+
+        //create xml reader event with input stream
+        XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
         try {
-            //create xml reader event with input stream
-            XMLInputFactory inputFactory = XMLInputFactory.newFactory();
 
-            // Setup a new eventReader
-            InputStream input = new FileInputStream(FILE_NAME);
+            // retrieving target file
+            File xmlFile = myData.getFile();
 
-            // Setup a new eventReader
-            XMLEventReader inputEventReader = inputFactory.createXMLEventReader(input);
+            XMLEventReader xmlEventReader = xmlInputFactory.createXMLEventReader(
+                    new FileInputStream(xmlFile));
 
-            CDModel cdModel = new CDModel();
+            while (xmlEventReader.hasNext()) {
 
-            while (inputEventReader.hasNext()) {
+                // xml reader event to get event and determine start element and end element
+                XMLEvent xmlEvent = xmlEventReader.nextEvent();
 
-                //xml reader event to get event and determine start element and end element
-                XMLEvent event = inputEventReader.nextEvent();
+                if (xmlEvent.isStartElement()) {
 
-                if (event.isStartElement()) {
+                    // creating a new item
+                    StartElement startElement = xmlEvent.asStartElement();
+                    String startElementName = startElement.getName().getLocalPart().toLowerCase();
 
-                    // If we have a item element we create a new item
-                    StartElement startElement = event.asStartElement();
-                    String startElementName = startElement.getName().getLocalPart();
 
-                    if (startElementName.equals("title")) {
-                        event = inputEventReader.nextEvent();
-                        cdModel.setTitle(event.asCharacters().getData());
+                    // reading variables from xml elements
+                    if (startElementName.equals("cd")) {
+                        cdModel = new CDModel();
+                        xmlEvent = xmlEventReader.nextEvent();
+                    } else if (startElementName.equals("title")) {
+                        xmlEvent = xmlEventReader.nextEvent();
+                        cdModel.setTitle(xmlEvent.asCharacters().getData());
+                    } else if (startElementName.equals("artist")) {
+                        xmlEvent = xmlEventReader.nextEvent();
+                        cdModel.setArtist(xmlEvent.asCharacters().getData());
+                    } else if (startElementName.equals("country")) {
+                        xmlEvent = xmlEventReader.nextEvent();
+                        cdModel.setCountry(xmlEvent.asCharacters().getData());
+                    } else if (startElementName.equals("company")) {
+                        xmlEvent = xmlEventReader.nextEvent();
+                        cdModel.setCompany(xmlEvent.asCharacters().getData());
+                    } else if (startElementName.equals("price")) {
+                        xmlEvent = xmlEventReader.nextEvent();
+                        cdModel.setPrice(Double.parseDouble(xmlEvent.asCharacters().getData()));
+                    } else if (startElementName.equals("year")) {
+                        xmlEvent = xmlEventReader.nextEvent();
+                        cdModel.setYear(Integer.parseInt(xmlEvent.asCharacters().getData()));
                     }
 
-                    if (startElementName.equals("artist")) {
-                        event = inputEventReader.nextEvent();
-                        cdModel.setArtist(event.asCharacters().getData());
-                    }
-
-                    if (startElementName.equals("country")) {
-                        event = inputEventReader.nextEvent();
-                        cdModel.setCountry(event.asCharacters().getData());
-                    }
-
-                    if (startElementName.equals("company")) {
-                        event = inputEventReader.nextEvent();
-                        cdModel.setCompany(event.asCharacters().getData());
-                    }
-
-                    if (startElementName.equals("price")) {
-                        event = inputEventReader.nextEvent();
-                        cdModel.setPrice(Double.parseDouble(event.asCharacters().getData()));
-                    }
-
-                    if (startElementName.equals("year")) {
-                        event = inputEventReader.nextEvent();
-                        cdModel.setYear(Integer.valueOf(event.asCharacters().getData()));
-                    }
                 }
 
-                // If we reach the end of an item element we add it to the list
-                if (event.isEndElement()) {
-                    EndElement endElement = event.asEndElement();
-                    String endElementName = endElement.asEndElement().getName().getLocalPart();
-                    if (endElementName.equals("item")) {
-                        items.add(cdModel);
+                // if </CD> element is reached, add employee object to list
+                if (xmlEvent.isEndElement()) {
+
+                    EndElement endElement = xmlEvent.asEndElement();
+                    if (endElement.getName().getLocalPart().toLowerCase().equals("cd")) {
+                        cdModelList.add(cdModel);
+                        cdModel = null;
                     }
                 }
             }
-        } catch (FileNotFoundException | XMLStreamException e) {
+        } catch (XMLStreamException | IOException e) {
             e.printStackTrace();
         }
-        return items;
-    }
+        return cdModelList;
 
+    }
 }

@@ -15,8 +15,8 @@
             <div class="control-group info">
                 <label class="control-label" for="server_name">File to upload:</label>
                 <div class="controls">
-                    <#--@spring.formInput "", "input-xlarge" /-->
-                    <#--@spring.showErrors " ", "alert alert-error"/-->
+                    <@spring.formInput "uploadedItem", "input-xlarge" />
+                    <@spring.showErrors " ", "alert alert-error"/>
                 </div>
             </div>
             <div class="control-group">
