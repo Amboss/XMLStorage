@@ -11,12 +11,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 /**
  * Controller handles upload page functionality
@@ -70,35 +71,39 @@ public class UploadController extends AbstractController {
     public ModelAndView onSubmit(
             @ModelAttribute("uploadedItem") UploadedItem uploadedItem, BindingResult errors) {
 
+        OutputStream outputStream = null;
+
+        InputStream inputStream = null;
+
+        CommonsMultipartFile file = uploadedItem.getMultipartFile();
+
         // validating file
         validator.validate(uploadedItem, errors);
 
         // retrieving fileName
         String fileName = uploadedItem.getMultipartFile().getOriginalFilename();
-        String filePath = System.getProperty("java.io.tmpdir") + "/"
-                + uploadedItem.getMultipartFile().getOriginalFilename();
 
         if (!errors.hasErrors()) {
 
-            FileOutputStream outputStream;
             try {
-                // uploading provided file to outputStream
-                outputStream = new FileOutputStream(new File(filePath));
-                outputStream.write(uploadedItem.getMultipartFile().getFileItem().get());
+
+                inputStream = file.getInputStream();
+
+                // copying input to output
+//                IOUtils.copy(inputStream, outputStream);
 
                 // writing upload stream to existing XML file
-                //cdService.convertFromObjectToXML(outputStream);
+                cdService.convertFromObjectToXML(inputStream);
 
-                outputStream.close();
+                inputStream.close();
+
             } catch (Exception e) {
                 return new ModelAndView("redirect:/confirm_upload/upload_failed", "filename", fileName);
             }
-
             return new ModelAndView("redirect:/confirm_upload/upload_success", "filename", fileName);
 
         } else {
             return new ModelAndView("pages/upload", "uploadedItem", uploadedItem);
         }
     }
-
 }

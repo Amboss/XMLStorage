@@ -2,8 +2,8 @@ package XMLStorage.logic.service;
 
 import XMLStorage.model.CDModel;
 
+import java.io.InputStream;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Interface for CDModel functionality
@@ -13,11 +13,16 @@ public interface CDService {
     /**
      * Method to save CDModel
      */
-    public void convertFromObjectToXML(String fileName, String rootElement, Map<String, String> elementsMap);
+    public void convertFromObjectToXML(InputStream inputStream);
 
     /**
-     * Method to load CDModel
+     * @return List of DCModels for view page
      */
-    public List<CDModel> convertFromXMLToObject();
+    public List<CDModel> getViewObject();
+
+    /**
+     * Method to parse CDModel List from InputStream
+     */
+    public List<CDModel> convertFromXMLToObject(InputStream inputStream);
 
 }

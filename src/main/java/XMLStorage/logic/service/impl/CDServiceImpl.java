@@ -6,13 +6,19 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
-import javax.xml.stream.*;
-import javax.xml.stream.events.*;
-import java.io.*;
+import javax.xml.stream.XMLEventReader;
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLOutputFactory;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.events.EndElement;
+import javax.xml.stream.events.StartElement;
+import javax.xml.stream.events.XMLEvent;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 /**
  * Class handel's CDModel functionality
@@ -26,86 +32,40 @@ public class CDServiceImpl implements CDService {
     /**
      * Method to save Object to XML file
      */
-    public void convertFromObjectToXML(String fileName,
-                                       String rootElement,
-                                       Map<String, String> elementsMap) {
+    public void convertFromObjectToXML(InputStream inputStream) {
 
         // Create a XMLOutputFactory
-        XMLOutputFactory xmlOutputFactory = XMLOutputFactory.newInstance();
+        XMLOutputFactory xmlof = XMLOutputFactory.newInstance();
+
+        List<CDModel> uploadList = convertFromXMLToObject(inputStream);
+    }
+
+    /**
+     *
+     * @return List of DCModels for view page
+     */
+    public List<CDModel> getViewObject() {
+
+        FileInputStream inputStream = null;
 
         try {
 
-            XMLEventWriter xmlEventWriter = xmlOutputFactory.createXMLEventWriter(
-                    new FileOutputStream(fileName), "UTF-8");
+            File xmlFile = myData.getFile();
+            inputStream = new FileInputStream(xmlFile);
 
-            // Create a EventFactory
-            XMLEventFactory eventFactory = XMLEventFactory.newInstance();
-
-            XMLEvent end = eventFactory.createDTD("\n");
-
-            StartDocument startDocument = eventFactory.createStartDocument();
-
-            xmlEventWriter.add(startDocument);
-            xmlEventWriter.add(end);
-
-            StartElement configStartElement = eventFactory.createStartElement("", "", rootElement);
-
-            xmlEventWriter.add(configStartElement);
-            xmlEventWriter.add(end);
-
-            // Write the element nodes
-            Set<String> elementNodes = elementsMap.keySet();
-
-            for (String key : elementNodes) {
-                createNode(xmlEventWriter, key, elementsMap.get(key));
-            }
-
-            xmlEventWriter.add(eventFactory.createEndElement("", "", rootElement));
-            xmlEventWriter.add(end);
-            xmlEventWriter.add(eventFactory.createEndDocument());
-            xmlEventWriter.close();
-
-        } catch (XMLStreamException | FileNotFoundException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
+        return convertFromXMLToObject(inputStream);
     }
 
     /**
-     * Adding end-of-lines and tab information to your XML file to provide
-     * functionality to format the XML file automatically.
-     *
-     * @throws XMLStreamException
-     */
-    private static void createNode(XMLEventWriter eventWriter, String element,
-                                   String value) throws XMLStreamException {
-
-        XMLEventFactory xmlEventFactory = XMLEventFactory.newInstance();
-        XMLEvent end = xmlEventFactory.createDTD("\n");
-        XMLEvent tab = xmlEventFactory.createDTD("\t");
-
-        //Create Start node
-        StartElement sElement = xmlEventFactory.createStartElement("", "", element);
-        eventWriter.add(tab);
-        eventWriter.add(sElement);
-
-        //Create Content
-        Characters characters = xmlEventFactory.createCharacters(value);
-        eventWriter.add(characters);
-
-        // Create End node
-        EndElement eElement = xmlEventFactory.createEndElement("", "", element);
-        eventWriter.add(eElement);
-        eventWriter.add(end);
-    }
-
-
-    /**
-     * Method to convert from XML to Object
+     * Method to parse CDModel List from InputStream
      *
      * @return List of DCModels
      */
-    @SuppressWarnings("unchecked")
-    public List<CDModel> convertFromXMLToObject() {
+    @SuppressWarnings("unchecked, null")
+    public List<CDModel> convertFromXMLToObject(InputStream inputStream) {
 
         List<CDModel> cdModelList = new ArrayList<>();
 
@@ -113,13 +73,13 @@ public class CDServiceImpl implements CDService {
 
         //create xml reader event with input stream
         XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
+
         try {
 
-            // retrieving target file
-            File xmlFile = myData.getFile();
+//            // retrieving target file
+//            File xmlFile = myData.getFile();
 
-            XMLEventReader xmlEventReader = xmlInputFactory.createXMLEventReader(
-                    new FileInputStream(xmlFile));
+            XMLEventReader xmlEventReader = xmlInputFactory.createXMLEventReader(inputStream);
 
             while (xmlEventReader.hasNext()) {
 
@@ -156,7 +116,6 @@ public class CDServiceImpl implements CDService {
                         xmlEvent = xmlEventReader.nextEvent();
                         cdModel.setYear(Integer.parseInt(xmlEvent.asCharacters().getData()));
                     }
-
                 }
 
                 // if </CD> element is reached, add employee object to list
@@ -169,7 +128,7 @@ public class CDServiceImpl implements CDService {
                     }
                 }
             }
-        } catch (XMLStreamException | IOException e) {
+        } catch (XMLStreamException e) {
             e.printStackTrace();
         }
         return cdModelList;

@@ -33,7 +33,7 @@ public class ViewController extends AbstractController {
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView loadViewPage() {
 
-        List<CDModel> modelList = service.convertFromXMLToObject();
+        List<CDModel> modelList = service.getViewObject();
 
         ModelAndView modelAndView = new ModelAndView("pages/view");
 
