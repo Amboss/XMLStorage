@@ -10,7 +10,7 @@
     <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
     <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
     <head>
-        <link rel="shortcut icon" href="<@spring.url '/static/img/favicon_02.ico'/>" type="image/x-icon"/>
+        <link rel="shortcut icon" href="<@spring.url '/static/img/favicon.ico'/>" type="image/x-icon"/>
         <link rel="stylesheet" type="text/css" href="<@spring.url '/static/css/bootstrap.css'/>"/>
         <link rel="stylesheet" type="text/css" href="<@spring.url '/static/css/DT_bootstrap.css'/>"/>
 

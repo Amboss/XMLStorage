@@ -2,14 +2,11 @@ package XMLStorage.controller.pages;
 
 import XMLStorage.controller.AbstractController;
 import XMLStorage.logic.service.CDService;
-import XMLStorage.model.CDModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.util.List;
 
 /**
  * Controller handles view page functionality
@@ -33,12 +30,6 @@ public class ViewController extends AbstractController {
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView loadViewPage() {
 
-        List<CDModel> modelList = service.getViewObject();
-
-        ModelAndView modelAndView = new ModelAndView("pages/view");
-
-        modelAndView.addObject("modelList", modelList);
-
-        return modelAndView;
+        return new ModelAndView("pages/view", "modelList", service.getViewObject());
     }
 }

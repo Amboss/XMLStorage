@@ -11,20 +11,23 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.InputStream;
-import java.io.OutputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Controller handles upload page functionality
  */
 @Controller
 @RequestMapping("/upload_file")
-public class UploadController extends AbstractController {
+public class UploadController extends AbstractController  {
 
     private UploadValidator validator;
 
@@ -60,7 +63,7 @@ public class UploadController extends AbstractController {
     @RequestMapping(params = "cancel", method = RequestMethod.POST)
     protected ModelAndView onCancel(HttpServletRequest request,
                                     HttpServletResponse response) {
-        return loadUploadPage();
+        return new ModelAndView("redirect:/view");
     }
 
     /**
@@ -71,30 +74,23 @@ public class UploadController extends AbstractController {
     public ModelAndView onSubmit(
             @ModelAttribute("uploadedItem") UploadedItem uploadedItem, BindingResult errors) {
 
-        OutputStream outputStream = null;
-
-        InputStream inputStream = null;
-
-        CommonsMultipartFile file = uploadedItem.getMultipartFile();
-
         // validating file
         validator.validate(uploadedItem, errors);
 
-        // retrieving fileName
-        String fileName = uploadedItem.getMultipartFile().getOriginalFilename();
-
         if (!errors.hasErrors()) {
+
+            // retrieving fileName
+            String fileName = uploadedItem.getMultipartFile().getOriginalFilename();
 
             try {
 
-                inputStream = file.getInputStream();
+                CommonsMultipartFile file = uploadedItem.getMultipartFile();
+                InputStream inputStream = file.getInputStream();
 
                 // copying input to output
 //                IOUtils.copy(inputStream, outputStream);
-
                 // writing upload stream to existing XML file
                 cdService.convertFromObjectToXML(inputStream);
-
                 inputStream.close();
 
             } catch (Exception e) {
@@ -106,4 +102,22 @@ public class UploadController extends AbstractController {
             return new ModelAndView("pages/upload", "uploadedItem", uploadedItem);
         }
     }
+
+//    @Override
+//    public ModelAndView resolveException(HttpServletRequest arg0,
+//                                         HttpServletResponse arg1,
+//                                         Object arg2,
+//                                         Exception exception) {
+//
+//        Map<Object, Object> model = new HashMap<Object, Object>();
+//
+//        if (exception instanceof MaxUploadSizeExceededException) {
+//            model.put("errors", "File size should be less then " +
+//                    ((MaxUploadSizeExceededException) exception).getMaxUploadSize() + " byte.");
+//        } else {
+//            model.put("errors", "Unexpected error: " + exception.getMessage());
+//        }
+//
+//        return new ModelAndView("pages/upload", "uploadedItem", new UploadedItem());
+//    }
 }

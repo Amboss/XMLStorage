@@ -27,6 +27,18 @@ public class DownLoadController extends AbstractController {
     }
 
     /**
+     * Action on button "Cancel" pressed.
+     *
+     * @return redirect to view page
+     */
+    @Override
+    @RequestMapping(params = "cancel", method = RequestMethod.POST)
+    protected ModelAndView onCancel(HttpServletRequest request,
+                                    HttpServletResponse response) {
+        return new ModelAndView("redirect:/view");
+    }
+
+    /**
      * Handel's download action
      */
     @RequestMapping(method = RequestMethod.POST)

@@ -18,27 +18,29 @@ public class UploadValidator implements Validator {
     }
 
     @Override
-        public void validate(Object target, Errors errors) {
+    public void validate(Object target, Errors errors) {
 
         UploadedItem uploadedItem = (UploadedItem) target;
 
         /*
          * validating for empty file
          */
-        if(!uploadedItem.getMultipartFile().isEmpty()) {
+        if (!uploadedItem.getMultipartFile().isEmpty()) {
 
             /*
-             * validating size of file
+             * validating size of file (must be less than 100000 bytes)
              */
-            if(uploadedItem.getMultipartFile().getSize() > 100000) {
+            if (uploadedItem.getMultipartFile().getSize() > 100000) {
                 errors.rejectValue("file", "file.max_size", "file size to big");
             }
 
             /*
-             * validating type of file
+             * validating type of file (must be XMK only)
              */
-            if(!uploadedItem.getMultipartFile().getContentType().equals("xml")) {
-                  errors.rejectValue("file", "file.wrong_format", "select XML type only");
+            if (!(uploadedItem.getMultipartFile().getOriginalFilename().substring(
+                    uploadedItem.getMultipartFile().getOriginalFilename()
+                            .lastIndexOf('.')).equalsIgnoreCase(".xml"))) {
+                errors.rejectValue("file", "file.wrong_format", "select XML type only");
             }
         } else {
             errors.rejectValue("file", "file.required", "select a file");

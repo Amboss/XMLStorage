@@ -11,14 +11,14 @@
      <div class="row-fluid">
          <h2>${pageTitle}</h2>
          <hr></br>
-         <form method="POST" enctype="multipart/form-data" action="fup.cgi">
+         <form method="POST" enctype="multipart/form-data">
              <h2>Press to download file</h2>
              <div class="control-group">
                  <div class="controls">
                      <input class="btn btn-primary"
                              type='submit'
-                             name='upload'
-                             value='Upload'/>
+                             name='download'
+                             value='Download'/>
                      <input class="btn"
                              type='submit'
                              name='cancel'

@@ -8,6 +8,17 @@
 <#assign pageTitle>View</#assign>
 
 <@com.page title="${pageTitle}">
+
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+            jQuery("table").dataTable( {
+                "iDisplayLength": -1,
+                "aaSorting": [[ 0, "asc" ]]
+            });
+        });
+    </script>
+
     <div class="row-fluid">
         <h2>${pageTitle}</h2>
         <hr></br>
