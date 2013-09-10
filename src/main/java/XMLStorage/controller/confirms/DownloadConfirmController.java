@@ -26,7 +26,7 @@ public class DownloadConfirmController extends AbstractController{
         ConfirmMessage confirm = new ConfirmMessage();
         confirm.setLabel("Download successful");
         confirm.setMessage("Your download is successful!");
-        return new ModelAndView("confirmation/confirm_alert", "confirm", confirm);
+        return new ModelAndView("confirmation/confirm_download", "confirm", confirm);
     }
 
     /**
@@ -49,7 +49,7 @@ public class DownloadConfirmController extends AbstractController{
         ConfirmMessage confirm = new ConfirmMessage();
         confirm.setLabel("Download failed");
         confirm.setMessage("Your download is failed!");
-        return new ModelAndView("confirmation/confirm_alert", "confirm", confirm);
+        return new ModelAndView("confirmation/confirm_download", "confirm", confirm);
     }
 
     /**

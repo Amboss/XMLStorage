@@ -13,12 +13,12 @@ public interface CDService {
     /**
      * Method to save CDModel
      */
-    public void convertFromObjectToXML(InputStream inputStream);
+    public void saveUploadedXmlFile(InputStream inputStream);
 
     /**
      * @return List of DCModels for view page
      */
-    public List<CDModel> getViewObject();
+    public List<CDModel> getStoredList();
 
     /**
      * Method to parse CDModel List from InputStream

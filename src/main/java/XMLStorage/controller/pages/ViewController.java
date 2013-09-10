@@ -30,6 +30,6 @@ public class ViewController extends AbstractController {
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView loadViewPage() {
 
-        return new ModelAndView("pages/view", "modelList", service.getViewObject());
+        return new ModelAndView("pages/view", "modelList", service.getStoredList());
     }
 }

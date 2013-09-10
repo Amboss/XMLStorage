@@ -30,21 +30,34 @@ public class CDServiceImpl implements CDService {
 
 
     /**
-     * Method to save Object to XML file
+     * Method to save Uploaded XML file
      */
-    public void convertFromObjectToXML(InputStream inputStream) {
+    public void saveUploadedXmlFile(InputStream inputStream) {
 
-        // Create a XMLOutputFactory
-        XMLOutputFactory xmlof = XMLOutputFactory.newInstance();
+        ArrayList<CDModel> uploadList = convertFromXMLToObject(inputStream);
 
-        List<CDModel> uploadList = convertFromXMLToObject(inputStream);
+        ArrayList<CDModel> storedList = getStoredList();
+
+        for(CDModel newModel: uploadList) {
+
+                if(storedList.contains(newModel.getTitle())) {
+
+                    // replace existingModel by newModel
+
+                } else {
+
+                    // save newModel at the end of list
+                    storedList.add(newModel);
+                }
+
+        }
     }
 
     /**
      *
      * @return List of DCModels for view page
      */
-    public List<CDModel> getViewObject() {
+    public ArrayList<CDModel> getStoredList() {
 
         FileInputStream inputStream = null;
 
@@ -60,14 +73,23 @@ public class CDServiceImpl implements CDService {
     }
 
     /**
+     * Method to convert Object to XML file
+     */
+    public void convertFromObjectToXML(List<CDModel> list) {
+
+        // Create a XMLOutputFactory
+        XMLOutputFactory xmlof = XMLOutputFactory.newInstance();
+    }
+
+    /**
      * Method to parse CDModel List from InputStream
      *
      * @return List of DCModels
      */
     @SuppressWarnings("unchecked, null")
-    public List<CDModel> convertFromXMLToObject(InputStream inputStream) {
+    public ArrayList<CDModel> convertFromXMLToObject(InputStream inputStream) {
 
-        List<CDModel> cdModelList = new ArrayList<>();
+        ArrayList<CDModel> cdModelList = new ArrayList<>();
 
         CDModel cdModel = null;
 

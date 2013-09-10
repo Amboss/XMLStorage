@@ -9,15 +9,6 @@
        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
 
     <bean id="multipartResolver"
-          class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
-          p:maxUploadSize="100000"/>
-          <!--p:uploadTempDir-ref="uploadDirResource" />-->
-
-    <!--<bean id="uploadDirResource"-->
-          <!--class="org.springframework.core.io.FileSystemResource">-->
-        <!--<constructor-arg>-->
-            <!--<value>classpath:/oxml/</value>-->
-        <!--</constructor-arg>-->
-    <!--</bean>-->
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 
 </beans>

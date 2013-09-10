@@ -1,14 +1,22 @@
 package XMLStorage.controller.pages;
 
 import XMLStorage.controller.AbstractController;
+import XMLStorage.util.CountInputStream;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.xml.sax.SAXException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.net.URL;
 
 /**
  * Controller handles download page functionality
@@ -18,12 +26,26 @@ import javax.servlet.http.HttpServletResponse;
 public class DownLoadController extends AbstractController {
 
     /**
+     * Path of the file to be downloaded, relative to application's directory
+     */
+    private String filePath = "/storage/target.xml";
+
+    /**
      * @return download page
      */
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView loadUploadPage() {
+    public ModelAndView loadUploadPage() throws ParserConfigurationException, IOException, SAXException {
 
-        return new ModelAndView("pages/download");
+        /*
+            retrieving size of stored xml file
+            size in KB is : " + (double)fileSize/1024);
+            size in MB is : " + (double)fileSize/(1024*1024));
+         */
+        URL url = getClass().getResource(filePath);
+        CountInputStream in = new CountInputStream(url.openStream());
+        DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(in);
+
+        return new ModelAndView("pages/download", "fileinfo", (int) in.getCount() / 1024);
     }
 
     /**
@@ -42,24 +64,24 @@ public class DownLoadController extends AbstractController {
      * Handel's download action
      */
     @RequestMapping(method = RequestMethod.POST)
-    public ModelAndView onSubmit(HttpServletRequest request,
-                                 HttpServletResponse response,
-                                 BindingResult errors) throws Exception {
+    public ModelAndView onSubmit(HttpServletRequest request, HttpServletResponse response) {
 
-        if (!errors.hasErrors()) {
+        try {
 
-//        int id = ServletRequestUtils.getRequiredIntParameter(request, "id");
-//
-//        Files file = this.filesService.find(id);
-//
-//        response.setContentType(file.getType());
-//        response.setContentLength(file.getFile().length);
-//        response.setHeader("Content-Disposition","attachment; filename=\"" + file.getFilename() +"\"");
-//
-//        FileCopyUtils.copy(file.getFile(), response.getOutputStream());
+            URL url = getClass().getResource(filePath);
+            File file = new File(url.toURI());
 
-            return new ModelAndView("redirect:/confirm_download/download_success");
-        } else {
+            if (file.exists()) {
+                response.setContentType("application/xls");
+                response.setContentLength(new Long(file.length()).intValue());
+                response.setHeader("Content-Disposition", "attachment; filename=" + file.getName());
+                FileCopyUtils.copy(new FileInputStream(file), response.getOutputStream());
+
+                return new ModelAndView("redirect:/confirm_download/download_success");
+            } else {
+                return new ModelAndView("redirect:/confirm_download/download_failed");
+            }
+        } catch (Exception e) {
             return new ModelAndView("redirect:/confirm_download/download_failed");
         }
     }

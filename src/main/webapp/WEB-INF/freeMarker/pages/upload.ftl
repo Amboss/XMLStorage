@@ -5,7 +5,9 @@
 
     <#import "/layout/common.ftl" as com />
 
-    <#assign pageTitle="Upload"/>
+    <#--assign spring=JspTaglibs["/WEB-INF/tlds/spring.tld"] /-->
+
+    <#assign pageTitle="Upload XML file"/>
 
 <@com.page title="${pageTitle}">
 
@@ -13,7 +15,7 @@
 
         /* invoking fileInput onclick of false button */
         $(document).ready( function() {
-            $('#false').click(function(){
+            $('#false_btn').click(function(){
                 $("#fileinput").click();
             });
         });
@@ -25,28 +27,33 @@
         }
     </script>
 
-    <div class="row-fluid">
+    <div class="span6">
         <h2>${pageTitle}</h2>
         <hr>
         </br>
         <form modelAttribute="uploadedItem" method="POST" enctype="multipart/form-data">
-            <#--if sessionScope.message?has_content-->
-                <#--div class="alert alert-error"-->
-                    <#--p>${sessionScope.message}</p-->
-                <#--/div-->
-            <#--/#if-->
+
             <div class="control-group info">
+                <@spring.bind "uploadedItem.multipartFile" />
+                <#if spring.status.error>
+                    <div class="alert alert-error" >
+                        <#list spring.status.errorMessages as error>
+                            ${error?html}
+                        </#list>
+                    </div>
+                </#if>
                 <label class="control-label" for="multipartFile">File to upload:</label>
                 <div class="controls">
                     <input id="fileinput" type="file" name='uploadedItem.multipartFile'
                            style="display:none;" onchange="CopyMe(this, 'txtFileName');"/>
-                    <input id="txtFileName" class="input-large" type="text" />
+                    <input id="txtFileName" class="input-xlarge" type="text" />
                 </div>
             </div>
             <div class="control-group">
                 <div class="controls">
-                    <input class="btn" id="false" value='Select file'/>
-                    <input class="btn btn-primary" type='submit' name='upload' value='Upload'/>
+                    <input class="btn" id="false_btn" value='Select file'
+                           style="width:185px;"/>
+                    <input class="btn btn-primary" type='submit' name='upload' value='Upload' />
                 </div>
             </div>
         </form>

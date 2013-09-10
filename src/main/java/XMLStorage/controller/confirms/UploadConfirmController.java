@@ -29,7 +29,7 @@ public class UploadConfirmController extends AbstractController{
         ConfirmMessage confirm = new ConfirmMessage();
         confirm.setLabel("Upload successful");
         confirm.setMessage("Upload of file: " + filename.getName() + "is successful!");
-        return new ModelAndView("confirmation/confirm_alert", "confirm", confirm);
+        return new ModelAndView("confirmation/confirm_upload", "confirm", confirm);
     }
 
     /**
@@ -42,9 +42,8 @@ public class UploadConfirmController extends AbstractController{
         ConfirmMessage confirm = new ConfirmMessage();
         confirm.setLabel("Upload failed");
         confirm.setMessage("Upload of file: " + filename.getName() + "is failed!");
-        return new ModelAndView("confirmation/confirm_alert", "confirm", confirm);
+        return new ModelAndView("confirmation/confirm_upload", "confirm", confirm);
     }
-
 
     /**
      * Action on button "Ok" pressed.
@@ -57,6 +56,9 @@ public class UploadConfirmController extends AbstractController{
         return new ModelAndView("redirect:/upload_file");
     }
 
+    /*
+     * Class represents model to store
+     */
     protected class FileName {
 
         private String name;

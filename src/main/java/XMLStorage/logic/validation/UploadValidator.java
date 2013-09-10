@@ -25,13 +25,13 @@ public class UploadValidator implements Validator {
         /*
          * validating for empty file
          */
-        if (!uploadedItem.getMultipartFile().isEmpty()) {
+        if (uploadedItem.getMultipartFile() != null) {
 
             /*
              * validating size of file (must be less than 100000 bytes)
              */
             if (uploadedItem.getMultipartFile().getSize() > 100000) {
-                errors.rejectValue("file", "file.max_size", "file size to big");
+                errors.rejectValue("multipartFile", "file.max_size", "file size to big");
             }
 
             /*
@@ -40,10 +40,10 @@ public class UploadValidator implements Validator {
             if (!(uploadedItem.getMultipartFile().getOriginalFilename().substring(
                     uploadedItem.getMultipartFile().getOriginalFilename()
                             .lastIndexOf('.')).equalsIgnoreCase(".xml"))) {
-                errors.rejectValue("file", "file.wrong_format", "select XML type only");
+                errors.rejectValue("multipartFile", "file.wrong_format", "select XML type only");
             }
         } else {
-            errors.rejectValue("file", "file.required", "select a file");
+            errors.rejectValue("multipartFile", "file.required", "select a file");
         }
     }
 }
