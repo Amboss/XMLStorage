@@ -19,10 +19,4 @@ public interface CDService {
      * @return List of DCModels for view page
      */
     public List<CDModel> getStoredList();
-
-    /**
-     * Method to parse CDModel List from InputStream
-     */
-    public List<CDModel> convertFromXMLToObject(InputStream inputStream);
-
 }

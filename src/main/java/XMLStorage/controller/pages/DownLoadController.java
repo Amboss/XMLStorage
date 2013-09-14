@@ -38,14 +38,13 @@ public class DownLoadController extends AbstractController {
 
         /*
             retrieving size of stored xml file
-            size in KB is : " + (double)fileSize/1024);
             size in MB is : " + (double)fileSize/(1024*1024));
          */
         URL url = getClass().getResource(filePath);
-        CountInputStream in = new CountInputStream(url.openStream());
-        DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(in);
+        CountInputStream counter = new CountInputStream(url.openStream());
+        DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(counter);
 
-        return new ModelAndView("pages/download", "fileinfo", (int) in.getCount() / 1024);
+        return new ModelAndView("pages/download", "fileinfo", (int) counter.getCount() / 1024);
     }
 
     /**
