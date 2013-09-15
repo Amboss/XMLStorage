@@ -6,6 +6,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
@@ -19,6 +20,11 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.events.EndElement;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
@@ -71,19 +77,73 @@ public class CDServiceImpl implements CDService {
                 /* If similarity exists, then replacing with new content.
                    If now, then insert new "CD" node at the end of stored file. */
                 if (targetNode != null) {
-                    // replacing
-                } else {
-                    // adding new node
-                }
 
+                    NodeList targetList = targetNode.getChildNodes();
+                    for (int k = 0; k < targetList.getLength(); k++) {
+
+                        Node child = targetNode.getChildNodes().item(k);
+                        if (child.getNodeName().equals("TITLE")) {
+                            child.setTextContent(cdModel.getTitle());
+                        } else if (child.getNodeName().equals("ARTIST")) {
+                            child.setTextContent(cdModel.getArtist());
+                        } else if (child.getNodeName().equals("COUNTRY")) {
+                            child.setTextContent(cdModel.getCountry());
+                        } else if (child.getNodeName().equals("COMPANY")) {
+                            child.setTextContent(cdModel.getCompany());
+                        } else if (child.getNodeName().equals("PRICE")) {
+                            child.setTextContent(String.valueOf(cdModel.getPrice()));
+                        } else if (child.getNodeName().equals("YEAR")) {
+                            child.setTextContent(String.valueOf(cdModel.getYear()));
+                        }
+                    }
+                } else {
+                    // creating new "CD" node with child nodes
+                    Element rootElement = storedDoc.createElement("CD");
+                    storedDoc.appendChild(rootElement);
+
+                    Element titleElement = storedDoc.createElement("TITLE");
+                    titleElement.setTextContent(cdModel.getTitle());
+                    rootElement.appendChild(titleElement);
+
+                    Element artistElement = storedDoc.createElement("ARTIST");
+                    artistElement.setTextContent(cdModel.getArtist());
+                    rootElement.appendChild(artistElement);
+
+                    Element countryElement = storedDoc.createElement("COUNTRY");
+                    countryElement.setTextContent(cdModel.getCountry());
+                    rootElement.appendChild(countryElement);
+
+                    Element companyElement = storedDoc.createElement("COMPANY");
+                    companyElement.setTextContent(cdModel.getCompany());
+                    rootElement.appendChild(companyElement);
+
+                    Element priceElement = storedDoc.createElement("PRICE");
+                    priceElement.setTextContent(String.valueOf(cdModel.getPrice()));
+                    rootElement.appendChild(priceElement);
+
+                    Element yearElement = storedDoc.createElement("YEAR");
+                    yearElement.setTextContent(String.valueOf(cdModel.getYear()));
+                    rootElement.appendChild(yearElement);
+
+                    // adding new node to document
+                    storedDoc.appendChild(rootElement);
+
+                    DOMSource source = new DOMSource(storedDoc);
+
+                    TransformerFactory transformerFactory = TransformerFactory.newInstance();
+                    Transformer transformer = transformerFactory.newTransformer();
+                    StreamResult result = new StreamResult(xmlFile);
+                    transformer.transform(source, result);
+                }
             }
-        } catch (ParserConfigurationException | IOException | SAXException e) {
+        } catch (ParserConfigurationException | IOException | SAXException | TransformerException e) {
             e.printStackTrace();
         }
     }
 
+
     /**
-     * @param obj must contain target NodeList
+     * @param obj         must contain target NodeList
      * @param xPathString must contain path with searched value of "TITLE" tag
      * @return list of target child nodes
      */
@@ -100,6 +160,7 @@ public class CDServiceImpl implements CDService {
 
     /**
      * Method to parse CDModel from nodeList
+     *
      * @param nodeList must contain CDModel xml nodeList
      * @return CDModel
      */
