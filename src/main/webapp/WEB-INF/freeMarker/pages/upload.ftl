@@ -31,10 +31,11 @@
         <h2>${pageTitle}</h2>
         <hr>
         </br>
-        <form modelAttribute="uploadedItem" method="POST" enctype="multipart/form-data">
+        <form modelAttribute="uploadedItem" method="POST"
+              action="upload_file/save" enctype="multipart/form-data">
 
             <div class="control-group info">
-                <@spring.bind "uploadedItem.multipartFile" />
+                <@spring.bind "uploadedItem" />
                 <#if spring.status.error>
                     <div class="alert alert-error" >
                         <#list spring.status.errorMessages as error>
@@ -42,18 +43,28 @@
                         </#list>
                     </div>
                 </#if>
-                <label class="control-label" for="multipartFile">File to upload:</label>
+                <label class="control-label" for="txtFileName">File to upload:</label>
                 <div class="controls">
-                    <input id="fileinput" type="file" name='uploadedItem.multipartFile'
-                           style="display:none;" onchange="CopyMe(this, 'txtFileName');"/>
-                    <input id="txtFileName" class="input-xlarge" type="text" />
+                    <input id="fileinput"
+                           type="file"
+                           name='uploadedItem'
+                           style="display:none;"
+                           onchange="CopyMe(this, 'txtFileName');"/>
+                    <input id="txtFileName"
+                           class="input-xlarge"
+                           type="text" />
                 </div>
             </div>
             <div class="control-group">
                 <div class="controls">
-                    <input class="btn" id="false_btn" value='Select file'
+                    <input class="btn"
+                           id="false_btn"
+                           value='Select file'
                            style="width:185px;"/>
-                    <input class="btn btn-primary" type='submit' name='upload' value='Upload' />
+                    <input class="btn btn-primary"
+                           type='submit'
+                           name='upload'
+                           value='Upload' />
                 </div>
             </div>
         </form>

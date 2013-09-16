@@ -76,7 +76,8 @@ public class DownLoadController extends AbstractController {
                 response.setHeader("Content-Disposition", "attachment; filename=" + file.getName());
                 FileCopyUtils.copy(new FileInputStream(file), response.getOutputStream());
 
-                return new ModelAndView("redirect:/confirm_download/download_success");
+                return null;
+                //return new ModelAndView("redirect:/confirm_download/download_success");
             } else {
                 return new ModelAndView("redirect:/confirm_download/download_failed");
             }

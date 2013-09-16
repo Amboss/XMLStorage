@@ -25,23 +25,27 @@ public class UploadValidator implements Validator {
         /*
          * validating for empty file
          */
-        if (uploadedItem.getMultipartFile() != null) {
+        if (uploadedItem.getFile() != null) {
 
             /*
              * validating size of file (must be less than 100000 bytes)
              */
-            if (uploadedItem.getMultipartFile().getSize() > 100000) {
+            if (uploadedItem.getFile().getSize() > 100000) {
                 errors.rejectValue("multipartFile", "file.max_size", "file size to big");
             }
 
             /*
              * validating type of file (must be XMK only)
              */
-            if (!(uploadedItem.getMultipartFile().getOriginalFilename().substring(
-                    uploadedItem.getMultipartFile().getOriginalFilename()
+            if (!(uploadedItem.getFile().getOriginalFilename().substring(
+                    uploadedItem.getFile().getOriginalFilename()
                             .lastIndexOf('.')).equalsIgnoreCase(".xml"))) {
                 errors.rejectValue("multipartFile", "file.wrong_format", "select XML type only");
             }
+//            String mimeType = determineMimeType(myModelAttribute.getFile().getBytes());
+//            if (mimeType.equalsIgnoreCase("application/pdf")){
+//                result.addError(new ObjectError("file", "pdf not accepted"));
+//            }
         } else {
             errors.rejectValue("multipartFile", "file.required", "select a file");
         }

@@ -1,28 +1,26 @@
 package XMLStorage.model;
 
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
-
-import java.io.Serializable;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * MultipartFile variable to store the uploaded file
  */
-public class UploadedItem implements Serializable {
+public class UploadedItem {
 
 
-    private CommonsMultipartFile multipartFile;
+    private MultipartFile multipartFile;
 
     public UploadedItem() {}
 
-    public UploadedItem(CommonsMultipartFile multipartFile) {
+    public UploadedItem(MultipartFile multipartFile) {
         this.multipartFile = multipartFile;
     }
 
-    public CommonsMultipartFile getMultipartFile() {
+    public MultipartFile getFile() {
         return multipartFile;
     }
 
-    public void setMultipartFile(CommonsMultipartFile multipartFile) {
+    public void setFile(MultipartFile multipartFile) {
         this.multipartFile = multipartFile;
     }
 

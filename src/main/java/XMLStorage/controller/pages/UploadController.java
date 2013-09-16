@@ -6,24 +6,31 @@ import XMLStorage.logic.validation.UploadValidator;
 import XMLStorage.model.UploadedItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
+import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
+import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Controller handles upload page functionality
  */
 @Controller
 @RequestMapping("/upload_file")
-public class UploadController extends AbstractController  {
+public class UploadController extends AbstractController implements HandlerExceptionResolver {
 
     private UploadValidator validator;
 
@@ -39,6 +46,7 @@ public class UploadController extends AbstractController  {
         this.validator = validator;
     }
 
+
     /**
      * Retrieving freeMarker/upload.ftl template
      *
@@ -51,24 +59,12 @@ public class UploadController extends AbstractController  {
     }
 
     /**
-     * Action on button "Cancel" pressed.
-     *
-     * @return redirect to view page
-     */
-    @Override
-    @RequestMapping(params = "cancel", method = RequestMethod.POST)
-    protected ModelAndView onCancel(HttpServletRequest request,
-                                    HttpServletResponse response) {
-        return new ModelAndView("redirect:/view");
-    }
-
-    /**
      * Handles upload page on submit
      */
-    @ResponseBody
-    @RequestMapping(method = RequestMethod.POST)
-    public ModelAndView onSubmit(
-            @ModelAttribute("uploadedItem") UploadedItem uploadedItem, BindingResult errors) {
+
+    @RequestMapping(value = "/save",method = RequestMethod.POST)
+    public ModelAndView onSubmit(@ModelAttribute("uploadedItem") UploadedItem uploadedItem,
+                                 Model model, BindingResult errors) throws IOException {
 
         // validating file
         validator.validate(uploadedItem, errors);
@@ -76,15 +72,12 @@ public class UploadController extends AbstractController  {
         if (!errors.hasErrors()) {
 
             // retrieving fileName
-            String fileName = uploadedItem.getMultipartFile().getOriginalFilename();
+            String fileName = uploadedItem.getFile().getOriginalFilename();
 
             try {
 
-                CommonsMultipartFile file = uploadedItem.getMultipartFile();
-                InputStream inputStream = file.getInputStream();
+                InputStream inputStream = uploadedItem.getFile().getInputStream();
 
-                // copying input to output
-//                IOUtils.copy(inputStream, outputStream);
                 // writing upload stream to existing XML file
                 cdService.saveUploadedXmlFile(inputStream);
                 inputStream.close();
@@ -99,21 +92,29 @@ public class UploadController extends AbstractController  {
         }
     }
 
-//    @Override
-//    public ModelAndView resolveException(HttpServletRequest arg0,
-//                                         HttpServletResponse arg1,
-//                                         Object arg2,
-//                                         Exception exception) {
-//
-//        Map<Object, Object> model = new HashMap<Object, Object>();
-//
-//        if (exception instanceof MaxUploadSizeExceededException) {
-//            model.put("errors", "File size should be less then " +
-//                    ((MaxUploadSizeExceededException) exception).getMaxUploadSize() + " byte.");
-//        } else {
-//            model.put("errors", "Unexpected error: " + exception.getMessage());
-//        }
-//
-//        return new ModelAndView("pages/upload", "uploadedItem", new UploadedItem());
-//    }
+    protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder)
+            throws ServletException {
+        // to actually be able to convert Multipart instance to byte[]
+        // we have to register a custom editor
+        binder.registerCustomEditor(byte[].class, new ByteArrayMultipartFileEditor());
+        // now Spring knows how to handle multipart object and convert them
+    }
+
+    @Override
+    public ModelAndView resolveException(HttpServletRequest arg0,
+                                         HttpServletResponse arg1,
+                                         Object arg2,
+                                         Exception exception) {
+
+        Map<Object, Object> model = new HashMap<Object, Object>();
+
+        if (exception instanceof MaxUploadSizeExceededException) {
+            model.put("errors", "File size should be less then " +
+                    ((MaxUploadSizeExceededException) exception).getMaxUploadSize() + " byte.");
+        } else {
+            model.put("errors", "Unexpected error: " + exception.getMessage());
+        }
+
+        return new ModelAndView("pages/upload", "uploadedItem", new UploadedItem());
+    }
 }

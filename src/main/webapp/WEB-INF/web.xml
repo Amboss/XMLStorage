@@ -65,7 +65,4 @@ Server Monitoring Service WEB configurations
         <load-on-startup>1</load-on-startup>
     </servlet>
 
-	<session-config>
-		<session-timeout>30</session-timeout>
-	</session-config>
 </web-app>
