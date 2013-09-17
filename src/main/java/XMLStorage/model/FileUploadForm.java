@@ -5,27 +5,21 @@ import org.springframework.web.multipart.MultipartFile;
 /**
  * MultipartFile variable to store the uploaded file
  */
-public class UploadedItem {
-
+public class FileUploadForm {
 
     private MultipartFile multipartFile;
 
-    public UploadedItem() {}
+    public FileUploadForm() { }
 
-    public UploadedItem(MultipartFile multipartFile) {
+    public FileUploadForm(MultipartFile multipartFile) {
         this.multipartFile = multipartFile;
     }
 
-    public MultipartFile getFile() {
+    public MultipartFile getMultipartFile() {
         return multipartFile;
     }
 
-    public void setFile(MultipartFile multipartFile) {
+    public void setMultipartFile(MultipartFile multipartFile) {
         this.multipartFile = multipartFile;
-    }
-
-    @Override
-    public String toString() {
-        return "UploadedItem{multipartFile=" + multipartFile + '}';
     }
 }

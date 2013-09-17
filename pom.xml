@@ -35,8 +35,8 @@
         <log4j.version>1.2.17</log4j.version>
 
         <!-- Web dependencies properties-->
-        <freemarker.version>2.3.19</freemarker.version>
-        <bootstrap.version>2.3.1-1</bootstrap.version>
+        <!--<freemarker.version>2.3.19</freemarker.version>-->
+        <!--<bootstrap.version>2.3.1-1</bootstrap.version>-->
 
         <!-- Test properties-->
         <junit.version>4.11</junit.version>
@@ -167,16 +167,16 @@
         </dependency>
 
         <!-- Web dependencies -->
-        <dependency>
-            <groupId>org.freemarker</groupId>
-            <artifactId>freemarker</artifactId>
-            <version>${freemarker.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>bootstrap</artifactId>
-            <version>${bootstrap.version}</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.freemarker</groupId>-->
+            <!--<artifactId>freemarker</artifactId>-->
+            <!--<version>${freemarker.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.webjars</groupId>-->
+            <!--<artifactId>bootstrap</artifactId>-->
+            <!--<version>${bootstrap.version}</version>-->
+        <!--</dependency>-->
 
         <!-- Test dependencies -->
         <dependency>

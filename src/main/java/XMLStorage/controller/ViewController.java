@@ -1,6 +1,5 @@
-package XMLStorage.controller.pages;
+package XMLStorage.controller;
 
-import XMLStorage.controller.AbstractController;
 import XMLStorage.logic.service.CDService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 @RequestMapping("/view")
-public class ViewController extends AbstractController {
+public class ViewController {
 
     private CDService service;
 

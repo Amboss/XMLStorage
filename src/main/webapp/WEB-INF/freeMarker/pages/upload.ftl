@@ -5,14 +5,11 @@
 
     <#import "/layout/common.ftl" as com />
 
-    <#--assign spring=JspTaglibs["/WEB-INF/tlds/spring.tld"] /-->
-
     <#assign pageTitle="Upload XML file"/>
 
 <@com.page title="${pageTitle}">
 
     <script type="text/javascript">
-
         /* invoking fileInput onclick of false button */
         $(document).ready( function() {
             $('#false_btn').click(function(){
@@ -26,28 +23,35 @@
             document.getElementById(sTargetID).value = arrTemp[arrTemp.length - 1];
         }
     </script>
-
     <div class="span6">
         <h2>${pageTitle}</h2>
         <hr>
         </br>
-        <form modelAttribute="uploadedItem" method="POST"
-              action="upload_file/save" enctype="multipart/form-data">
-
+        <style>
+            element.style {
+                margin: 0 0 0 0;
+            }
+            ul, ol {
+                margin: 0 0 0 0;
+                padding: 0;
+            }
+            ul, li{
+                list-style-type:none;
+            }
+        </style>
+        <form action="/XMLStorage/upload_file/save" method="POST" enctype="multipart/form-data">
             <div class="control-group info">
-                <@spring.bind "uploadedItem" />
+                <@spring.bind "fileUploadForm.multipartFile" />
                 <#if spring.status.error>
-                    <div class="alert alert-error" >
-                        <#list spring.status.errorMessages as error>
-                            ${error?html}
-                        </#list>
-                    </div>
+                    <#list spring.status.errorMessages as error>
+                        <ul><li class="alert alert-error" >${error?html}</li></ul>
+                    </#list>
                 </#if>
                 <label class="control-label" for="txtFileName">File to upload:</label>
                 <div class="controls">
                     <input id="fileinput"
                            type="file"
-                           name='uploadedItem'
+                           name='file'
                            style="display:none;"
                            onchange="CopyMe(this, 'txtFileName');"/>
                     <input id="txtFileName"

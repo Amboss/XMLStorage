@@ -37,27 +37,6 @@ Server Monitoring Service WEB configurations
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
-    <!-- ===================== Spring Security Context Loader Listener =========================== -->
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
-
-    <!-- ===================== Spring Security debug logging ===================================== -->
-    <listener>
-        <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
-    </listener>
-
-    <!-- ===================== Isolation of spring MVC servlet container ========================= -->
-    <security-constraint>
-        <web-resource-collection>
-            <web-resource-name>ServerMonitoring</web-resource-name>
-            <url-pattern>*.ftl</url-pattern>
-        </web-resource-collection>
-        <auth-constraint>
-            <!-- Nobody is allowed to visit these -->
-        </auth-constraint>
-    </security-constraint>
-
     <!-- ===================== Free Marker configurations ======================================== -->
     <servlet>
         <servlet-name>freemarker</servlet-name>
@@ -65,4 +44,13 @@ Server Monitoring Service WEB configurations
         <load-on-startup>1</load-on-startup>
     </servlet>
 
+    <!-- ===================== Spring Context Loader Listener =========================== -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <!-- ===================== Spring  debug logging ===================================== -->
+    <listener>
+        <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+    </listener>
 </web-app>

@@ -18,7 +18,7 @@
           class="org.springframework.context.support.ReloadableResourceBundleMessageSource"
           p:defaultEncoding="UTF-8"
           p:fileEncodings="UTF-8"
-          p:fallbackToSystemLocale="true"
+          p:fallbackToSystemLocale="false"
           p:basenames="/WEB-INF/message/messages"/>
 
 <!--

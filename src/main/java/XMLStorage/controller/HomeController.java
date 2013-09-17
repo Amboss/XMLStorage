@@ -1,6 +1,5 @@
-package XMLStorage.controller.pages;
+package XMLStorage.controller;
 
-import XMLStorage.controller.AbstractController;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 @RequestMapping("/index")
-public class HomeController extends AbstractController {
+public class HomeController  {
 
     /**
      * Retrieving freeMarker/upload.ftl template

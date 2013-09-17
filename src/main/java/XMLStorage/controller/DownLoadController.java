@@ -1,6 +1,5 @@
-package XMLStorage.controller.pages;
+package XMLStorage.controller;
 
-import XMLStorage.controller.AbstractController;
 import XMLStorage.util.CountInputStream;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
@@ -23,7 +22,7 @@ import java.net.URL;
  */
 @Controller
 @RequestMapping(value = "download_file")
-public class DownLoadController extends AbstractController {
+public class DownLoadController {
 
     /**
      * Path of the file to be downloaded, relative to application's directory
@@ -34,7 +33,7 @@ public class DownLoadController extends AbstractController {
      * @return download page
      */
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView loadUploadPage() throws ParserConfigurationException, IOException, SAXException {
+    public ModelAndView getDownloadPage() throws ParserConfigurationException, IOException, SAXException {
 
         /*
             retrieving size of stored xml file
@@ -52,7 +51,6 @@ public class DownLoadController extends AbstractController {
      *
      * @return redirect to view page
      */
-    @Override
     @RequestMapping(params = "cancel", method = RequestMethod.POST)
     protected ModelAndView onCancel(HttpServletRequest request,
                                     HttpServletResponse response) {
@@ -77,12 +75,12 @@ public class DownLoadController extends AbstractController {
                 FileCopyUtils.copy(new FileInputStream(file), response.getOutputStream());
 
                 return null;
-                //return new ModelAndView("redirect:/confirm_download/download_success");
+                // TODO return new ModelAndView("redirect:/confirm_download/download_success");
             } else {
-                return new ModelAndView("redirect:/confirm_download/download_failed");
+                return new ModelAndView("pages/download");
             }
         } catch (Exception e) {
-            return new ModelAndView("redirect:/confirm_download/download_failed");
+            return new ModelAndView("pages/download");
         }
     }
 }
