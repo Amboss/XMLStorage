@@ -19,6 +19,21 @@
                 padding-top: 60px;
                 padding-bottom: 40px;
             }
+            #upload {
+                background-image: url("<@spring.url '/static/img/upload.png'/>");
+                background-repeat: no-repeat;
+                padding:20px;
+            }
+            #download {
+                background-image: url("<@spring.url '/static/img/download.png'/>");
+                background-repeat: no-repeat;
+                padding:20px;
+            }
+            #light_grey {
+                background-image: url("<@spring.url '/static/img/small_transparent.png'/>");
+                background-repeat: no-repeat;
+                background-position:right top;
+            }
         </style>
 
         <script type="text/javascript" charset="utf-8" src="http://code.jquery.com/jquery-latest.js" ></script>

@@ -3,7 +3,7 @@ package XMLStorage.model;
 import java.io.Serializable;
 
 /**
- * Class to represent model of CD entity
+ * Class to represent model of CD object
  */
 public class CDModel implements Serializable {
 

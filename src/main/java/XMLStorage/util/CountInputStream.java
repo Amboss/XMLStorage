@@ -16,7 +16,6 @@ public class CountInputStream extends FilterInputStream {
     }
 
     /**
-     *
      * @return value in Long
      */
     public long getCount() {

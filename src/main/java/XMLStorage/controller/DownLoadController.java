@@ -35,10 +35,6 @@ public class DownLoadController {
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView getDownloadPage() throws ParserConfigurationException, IOException, SAXException {
 
-        /*
-            retrieving size of stored xml file
-            size in MB is : " + (double)fileSize/(1024*1024));
-         */
         URL url = getClass().getResource(filePath);
         CountInputStream counter = new CountInputStream(url.openStream());
         DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(counter);
@@ -52,8 +48,7 @@ public class DownLoadController {
      * @return redirect to view page
      */
     @RequestMapping(params = "cancel", method = RequestMethod.POST)
-    protected ModelAndView onCancel(HttpServletRequest request,
-                                    HttpServletResponse response) {
+    protected ModelAndView onCancel() {
         return new ModelAndView("redirect:/view");
     }
 
@@ -74,13 +69,11 @@ public class DownLoadController {
                 response.setHeader("Content-Disposition", "attachment; filename=" + file.getName());
                 FileCopyUtils.copy(new FileInputStream(file), response.getOutputStream());
 
-                return null;
-                // TODO return new ModelAndView("redirect:/confirm_download/download_success");
-            } else {
-                return new ModelAndView("pages/download");
+                return new ModelAndView("redirect:/view");
             }
         } catch (Exception e) {
             return new ModelAndView("pages/download");
         }
+        return null;
     }
 }

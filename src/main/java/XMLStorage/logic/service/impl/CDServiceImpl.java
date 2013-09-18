@@ -2,6 +2,7 @@ package XMLStorage.logic.service.impl;
 
 import XMLStorage.logic.service.CDService;
 import XMLStorage.model.CDModel;
+import org.apache.log4j.Logger;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
@@ -20,15 +21,10 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.events.EndElement;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import javax.xml.xpath.XPath;
-import javax.xml.xpath.XPathConstants;
-import javax.xml.xpath.XPathExpressionException;
-import javax.xml.xpath.XPathFactory;
+import javax.xml.xpath.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -41,172 +37,32 @@ import java.util.ArrayList;
 @Service("CDServiceImpl")
 public class CDServiceImpl implements CDService {
 
+    protected static Logger logger = Logger.getLogger(CDServiceImpl.class);
+
     private Resource myData = new ClassPathResource("/storage/target.xml");
 
     /**
-     * Method to save Uploaded XML file
-     *
-     * @param inputStream must contain stream of XML type with XMLStorage.model.CDModel format
-     */
-    public void saveUploadedXmlFile(InputStream inputStream) {
-
-        try {
-
-            DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-
-            // building stored Node List by CD tag
-            File xmlFile = myData.getFile();
-            DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-            Document storedDoc = docBuilder.parse(xmlFile);
-            NodeList storedNodeList = storedDoc.getElementsByTagName("CD");
-
-            // building upload Node List by CD tag
-            Document uploadedDoc = docBuilder.parse(inputStream);
-            NodeList uploadMainNodeList = uploadedDoc.getElementsByTagName("CD");
-
-            // iterating upload main Node List
-            for (int i = 0; i < uploadMainNodeList.getLength(); i++) {
-
-                NodeList listOfCurrentCD = uploadMainNodeList.item(i).getChildNodes();
-                CDModel cdModel = parseToModel(listOfCurrentCD);
-
-                // searching for similarity of title value
-                String xPathString = "./CD[./TITLE = '" + cdModel.getTitle() + "']";
-                Node targetNode = findNode(storedNodeList, xPathString);
-
-                /* If similarity exists, then replacing with new content.
-                   If now, then insert new "CD" node at the end of stored file. */
-                if (targetNode != null) {
-
-                    NodeList targetList = targetNode.getChildNodes();
-                    for (int k = 0; k < targetList.getLength(); k++) {
-
-                        Node child = targetNode.getChildNodes().item(k);
-                        if (child.getNodeName().equals("TITLE")) {
-                            child.setTextContent(cdModel.getTitle());
-                        } else if (child.getNodeName().equals("ARTIST")) {
-                            child.setTextContent(cdModel.getArtist());
-                        } else if (child.getNodeName().equals("COUNTRY")) {
-                            child.setTextContent(cdModel.getCountry());
-                        } else if (child.getNodeName().equals("COMPANY")) {
-                            child.setTextContent(cdModel.getCompany());
-                        } else if (child.getNodeName().equals("PRICE")) {
-                            child.setTextContent(String.valueOf(cdModel.getPrice()));
-                        } else if (child.getNodeName().equals("YEAR")) {
-                            child.setTextContent(String.valueOf(cdModel.getYear()));
-                        }
-                    }
-                } else {
-                    // creating new "CD" node with child nodes
-                    Element rootElement = storedDoc.createElement("CD");
-                    storedDoc.appendChild(rootElement);
-
-                    Element titleElement = storedDoc.createElement("TITLE");
-                    titleElement.setTextContent(cdModel.getTitle());
-                    rootElement.appendChild(titleElement);
-
-                    Element artistElement = storedDoc.createElement("ARTIST");
-                    artistElement.setTextContent(cdModel.getArtist());
-                    rootElement.appendChild(artistElement);
-
-                    Element countryElement = storedDoc.createElement("COUNTRY");
-                    countryElement.setTextContent(cdModel.getCountry());
-                    rootElement.appendChild(countryElement);
-
-                    Element companyElement = storedDoc.createElement("COMPANY");
-                    companyElement.setTextContent(cdModel.getCompany());
-                    rootElement.appendChild(companyElement);
-
-                    Element priceElement = storedDoc.createElement("PRICE");
-                    priceElement.setTextContent(String.valueOf(cdModel.getPrice()));
-                    rootElement.appendChild(priceElement);
-
-                    Element yearElement = storedDoc.createElement("YEAR");
-                    yearElement.setTextContent(String.valueOf(cdModel.getYear()));
-                    rootElement.appendChild(yearElement);
-
-                    // adding new node to document
-                    storedDoc.appendChild(rootElement);
-
-                    DOMSource source = new DOMSource(storedDoc);
-
-                    TransformerFactory transformerFactory = TransformerFactory.newInstance();
-                    Transformer transformer = transformerFactory.newTransformer();
-                    StreamResult result = new StreamResult(xmlFile);
-                    transformer.transform(source, result);
-                }
-            }
-        } catch (ParserConfigurationException | IOException | SAXException | TransformerException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    /**
-     * @param obj         must contain target NodeList
-     * @param xPathString must contain path with searched value of "TITLE" tag
-     * @return list of target child nodes
-     */
-    private Node findNode(Object obj, String xPathString) {
-        Node node = null;
-        try {
-            XPath xPath = XPathFactory.newInstance().newXPath();
-            node = (Node) xPath.compile(xPathString).evaluate(obj, XPathConstants.NODESET);
-        } catch (XPathExpressionException e) {
-            e.printStackTrace();
-        }
-        return node;
-    }
-
-    /**
-     * Method to parse CDModel from nodeList
-     *
-     * @param nodeList must contain CDModel xml nodeList
-     * @return CDModel
-     */
-    private CDModel parseToModel(NodeList nodeList) {
-        assert nodeList != null;
-
-        CDModel cdModel = new CDModel();
-        for (int j = 0; j < nodeList.getLength(); j++) {
-            if (nodeList.item(j).getNodeName().equals("TITLE")) {
-                cdModel.setTitle(nodeList.item(j).getNodeValue());
-            } else if (nodeList.item(j).getNodeName().equals("ARTIST")) {
-                cdModel.setArtist(nodeList.item(j).getNodeValue());
-            } else if (nodeList.item(j).getNodeName().equals("COUNTRY")) {
-                cdModel.setCountry(nodeList.item(j).getNodeValue());
-            } else if (nodeList.item(j).getNodeName().equals("COMPANY")) {
-                cdModel.setCompany(nodeList.item(j).getNodeValue());
-            } else if (nodeList.item(j).getNodeName().equals("PRICE")) {
-                cdModel.setPrice(Double.parseDouble(nodeList.item(j).getNodeValue()));
-            } else if (nodeList.item(j).getNodeName().equals("YEAR")) {
-                cdModel.setYear(Integer.parseInt(nodeList.item(j).getNodeValue()));
-            }
-        }
-        return cdModel;
-    }
-
-    /**
-     * Method to parse CDModel List from InputStream
+     * Method to parse CDModel List from InputStream by STax parser
      *
      * @return ArrayList<CDModel>
+     * @throws RuntimeException
      */
     @SuppressWarnings("unchecked, null")
     public ArrayList<CDModel> getStoredList() {
+
+        logger.debug("retrieving stored list of CD from " + myData.toString() + " file");
 
         ArrayList<CDModel> cdModelList = new ArrayList<>();
         CDModel cdModel = null;
 
         //create xml reader event with input stream
         XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
-
         try {
 
             // generating reader of existing file
             File xmlFile = myData.getFile();
             FileInputStream inputStream = new FileInputStream(xmlFile);
             XMLEventReader xmlEventReader = xmlInputFactory.createXMLEventReader(inputStream);
-
             while (xmlEventReader.hasNext()) {
 
                 // xml reader event to get event and determine start element and end element
@@ -245,7 +101,6 @@ public class CDServiceImpl implements CDService {
 
                 // if "/CD" tag is reached, add employee object to list
                 if (xmlEvent.isEndElement()) {
-
                     EndElement endElement = xmlEvent.asEndElement();
                     if (endElement.getName().getLocalPart().toLowerCase().equals("cd")) {
                         cdModelList.add(cdModel);
@@ -254,8 +109,220 @@ public class CDServiceImpl implements CDService {
                 }
             }
         } catch (XMLStreamException | IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
         return cdModelList;
+    }
+
+    /**
+     * Method to save Uploaded XML file with DOM parser
+     *
+     * @param inputStream must contain stream of XML type with XMLStorage.model.CDModel format
+     * @throws RuntimeException
+     */
+    public void saveUploadedXmlFile(InputStream inputStream) {
+
+        logger.debug("initiating saveUploadedXmlFile method");
+
+        try {
+            // initiating new Instance of DocumentBuilderFactory
+            DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+
+            // initiating new TransformerFactory
+            Transformer transformer = TransformerFactory.newInstance().newTransformer();
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+
+            // building stored Node List by CD tag
+            Document storedDoc = docBuilder.parse(myData.getFile());
+            storedDoc.getDocumentElement().normalize();
+            NodeList storedNodeList = storedDoc.getDocumentElement().getChildNodes();
+
+            // building upload Node List by CD tag
+            Document uploadedDoc = docBuilder.parse(inputStream);
+            uploadedDoc.getDocumentElement().normalize();
+            NodeList uploadMainNodeList = uploadedDoc.getDocumentElement().getChildNodes();
+
+            // iterating upload main Node List
+            for (int i = 0; i < uploadMainNodeList.getLength(); i++) {
+
+                // working with current "CD"
+                Node cdNode = uploadMainNodeList.item(i);
+                if (cdNode.getNodeType() == Node.ELEMENT_NODE && cdNode.getNodeName().equalsIgnoreCase("CD")) {
+                    Element element = (Element) cdNode;
+                    NodeList nodeList = element.getChildNodes();
+
+                    // casting node list to object of CDModel type
+                    CDModel cdModel = castToModel(nodeList);
+
+                    // searching for similarity of title value
+                    String xPathString = "./CD[TITLE = '" + cdModel.getTitle() + "']";
+                    Node targetNode = findNode(storedNodeList, xPathString);
+
+                    /* If similarity exists, then replacing with new content.
+                    If now, then insert new "CD" node at the end of stored file. */
+                    if (targetNode != null) {
+                        logger.debug("Title duplicated: replacing existing node");
+                        replaceTextContent(storedDoc, targetNode, cdModel, transformer);
+                    } else {
+                        logger.debug("Title not found in storage: adding new node to file");
+                        appendToStoredFile(storedDoc, cdModel, transformer);
+                    }
+                }
+            }
+        } catch (ParserConfigurationException | IOException | SAXException | TransformerConfigurationException e) {
+            throw new RuntimeException();
+        }
+    }
+
+    /**
+     * Appending new "CD" element to stored XML file
+     *
+     * @param storedDoc target document buildup from storage file.
+     * @param cdModel object that store new content.
+     * @param transformer to handel save of changes.
+     * @throws RuntimeException
+     */
+    private void appendToStoredFile(Document storedDoc, CDModel cdModel, Transformer transformer) {
+
+        logger.debug("initiating appendToStoredFile method");
+
+        try {
+            Element rootElement = storedDoc.createElement("CD");
+
+            Element titleElement = storedDoc.createElement("TITLE");
+            titleElement.setTextContent(cdModel.getTitle());
+            rootElement.appendChild(titleElement);
+
+            Element artistElement = storedDoc.createElement("ARTIST");
+            artistElement.setTextContent(cdModel.getArtist());
+            rootElement.appendChild(artistElement);
+
+            Element countryElement = storedDoc.createElement("COUNTRY");
+            countryElement.setTextContent(cdModel.getCountry());
+            rootElement.appendChild(countryElement);
+
+            Element companyElement = storedDoc.createElement("COMPANY");
+            companyElement.setTextContent(cdModel.getCompany());
+            rootElement.appendChild(companyElement);
+
+            Element priceElement = storedDoc.createElement("PRICE");
+            priceElement.setTextContent(String.valueOf(cdModel.getPrice()));
+            rootElement.appendChild(priceElement);
+
+            Element yearElement = storedDoc.createElement("YEAR");
+            yearElement.setTextContent(String.valueOf(cdModel.getYear()));
+            rootElement.appendChild(yearElement);
+
+            // adding new node to document
+            Element root = storedDoc.getDocumentElement();
+            root.appendChild(rootElement);
+
+            transformer.transform(new DOMSource(root), new StreamResult(myData.getFile()));
+
+        } catch (TransformerException | IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * Replacing text content of target node, target node have to be at the storage file
+     *
+     * @param storedDoc target document buildup from storage file.
+     * @param targetNode node where changes have to be made.
+     * @param cdModel object that store new content.
+     * @param transformer to handel save of changes.
+     *
+     * @return node with replaced content of child nodes
+     * @throws RuntimeException
+     */
+    private void replaceTextContent(Document storedDoc, Node targetNode,
+                                    CDModel cdModel, Transformer transformer) {
+
+        logger.debug("initiating replaceTextContent method");
+
+        try {
+
+            NodeList targetList = targetNode.getChildNodes();
+            for (int k = 0; k < targetList.getLength(); k++) {
+
+                Node child = targetNode.getChildNodes().item(k);
+                if (child.getNodeName().equals("TITLE")) {
+                    child.setTextContent(cdModel.getTitle());
+                } else if (child.getNodeName().equals("ARTIST")) {
+                    child.setTextContent(cdModel.getArtist());
+                } else if (child.getNodeName().equals("COUNTRY")) {
+                    child.setTextContent(cdModel.getCountry());
+                } else if (child.getNodeName().equals("COMPANY")) {
+                    child.setTextContent(cdModel.getCompany());
+                } else if (child.getNodeName().equals("PRICE")) {
+                    child.setTextContent(String.valueOf(cdModel.getPrice()));
+                } else if (child.getNodeName().equals("YEAR")) {
+                    child.setTextContent(String.valueOf(cdModel.getYear()));
+                }
+            }
+
+            // adding new node to document
+            Element root = storedDoc.getDocumentElement();
+            root.appendChild(targetNode);
+
+            transformer.transform(new DOMSource(root), new StreamResult(myData.getFile()));
+
+        } catch (TransformerException | IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * Casting NodeList to CDModel
+     *
+     * @param nodeList contain list to be casted
+     * @return Object with type CDModel
+     */
+    private CDModel castToModel(NodeList nodeList) {
+
+        logger.debug("initiating castToModel method");
+
+        CDModel cdModel = new CDModel();
+        for (int j = 0; j < nodeList.getLength(); j++) {
+            if (nodeList.item(j).getNodeName().equalsIgnoreCase("TITLE")) {
+                cdModel.setTitle(nodeList.item(j).getTextContent());
+            } else if (nodeList.item(j).getNodeName().equalsIgnoreCase("ARTIST")) {
+                cdModel.setArtist(nodeList.item(j).getTextContent());
+            } else if (nodeList.item(j).getNodeName().equalsIgnoreCase("COUNTRY")) {
+                cdModel.setCountry(nodeList.item(j).getTextContent());
+            } else if (nodeList.item(j).getNodeName().equalsIgnoreCase("COMPANY")) {
+                cdModel.setCompany(nodeList.item(j).getTextContent());
+            } else if (nodeList.item(j).getNodeName().equalsIgnoreCase("PRICE")) {
+                cdModel.setPrice(Double.parseDouble(nodeList.item(j).getTextContent()));
+            } else if (nodeList.item(j).getNodeName().equalsIgnoreCase("YEAR")) {
+                cdModel.setYear(Integer.parseInt(nodeList.item(j).getTextContent()));
+            }
+        }
+        return cdModel;
+    }
+
+    /**
+     * Searching obj for similarity by xPathString
+     *
+     * @param obj contain target NodeList
+     * @param xPathString contain path with searched value of "TITLE" tag
+     * @return list of target child nodes
+     * @throws RuntimeException
+     */
+    private Node findNode(Object obj, String xPathString) {
+
+        logger.debug("initiating findNode method");
+
+        Node node = null;
+        try {
+            XPath xpath = XPathFactory.newInstance().newXPath();
+            XPathExpression expr = xpath.compile(xPathString);
+            node = (Node) expr.evaluate(obj, XPathConstants.NODE);
+        } catch (XPathExpressionException e) {
+            throw new RuntimeException(e);
+        }
+        return node;
     }
 }
