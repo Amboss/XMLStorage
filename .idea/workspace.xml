@@ -4,6 +4,8 @@
     <list default="true" id="f00caf2c-d764-4892-83fa-547e9a1d3f0a" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XMLStorage.iml" afterPath="$PROJECT_DIR$/XMLStorage.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/pages/index.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/pages/index.ftl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="bbb8f1ff-8f9a-4f25-961a-4e2fbc2d1087" name="New changelist" comment="">
@@ -11,7 +13,7 @@
     </list>
     <ignored path="XMLStorage.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1379549617908" ignored="false" />
+    <file path="/Dummy.txt" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1379551580974" ignored="false" />
     <file path="/CustomUtilImpl.java" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378828130544" ignored="false" />
     <file path="/UploadController.java" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1379450437107" ignored="false" />
     <file path="/spring-multipart.xml" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1379425975826" ignored="false" />
@@ -62,7 +64,7 @@
     <file path="$PROJECT_DIR$/../ServerMonitoring_2.0/src/main/java/serverMonitoring/controller/employeePages/ServerDetailsController.java" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1378837508887" ignored="false" />
     <file path="/AbstractController.java" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1379426423285" ignored="false" />
     <file path="/spring-servlet.xml" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1379456570694" ignored="false" />
-    <file path="/README.md" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1379549521025" ignored="false" />
+    <file path="/README.md" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1379551656264" ignored="false" />
     <file path="/CDServiceTest.java" changelist="f00caf2c-d764-4892-83fa-547e9a1d3f0a" time="1379550657432" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -125,10 +127,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CDServiceImpl.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="CDServiceImpl.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/XMLStorage/logic/service/impl/CDServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="77" column="79" selection-start="2824" selection-end="2824" vertical-scroll-proportion="0.579758">
+            <state line="77" column="79" selection-start="2824" selection-end="2824" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="27" column="4" selection-start="869" selection-end="886" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.ftl" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/pages/index.ftl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="72" column="0" selection-start="2335" selection-end="2335" vertical-scroll-proportion="-29.384615">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="9" selection-start="153" selection-end="153" vertical-scroll-proportion="0.03740374">
               <folding />
             </state>
           </provider>
@@ -160,14 +189,14 @@
         <option value="$PROJECT_DIR$/src/main/java/XMLStorage/model/CDModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/XMLStorage/util/CountInputStream.java" />
         <option value="$PROJECT_DIR$/src/main/resources/spring/spring-multipart.xml" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/pages/download.ftl" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/pages/upload.ftl" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/pages/index.ftl" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/common/header.ftl" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/test/XMLStorage/logic/service/CDServiceTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/XMLStorage/logic/service/CDServiceTest.java" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/pages/index.ftl" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -188,6 +217,38 @@
         <PATH_ELEMENT>
           <option name="myItemId" value="XMLStorage" />
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="XMLStorage" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Plugins" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$PluginsNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="XMLStorage" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Plugins" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$PluginsNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="tomcat7" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$PluginNode" />
         </PATH_ELEMENT>
       </PATH>
       <PATH>
@@ -1094,7 +1155,11 @@
       <created>1379548598299</created>
       <updated>1379548598299</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="updating readme file">
+      <created>1379550971134</created>
+      <updated>1379550971134</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -1186,7 +1251,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding styling images for background, project cleanup" />
+    <option name="LAST_COMMIT_MESSAGE" value="updating readme file" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1211,6 +1276,7 @@
     <MESSAGE value="fixing upload file controller and validator" />
     <MESSAGE value="fixing method to store uploaded file." />
     <MESSAGE value="adding styling images for background, project cleanup" />
+    <MESSAGE value="updating readme file" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1248,13 +1314,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="0" selection-start="1390" selection-end="1390" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/spring/spring-mvc.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -1265,13 +1324,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-servlet.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/pages/index.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="31" selection-start="508" selection-end="508" vertical-scroll-proportion="0.057471264">
           <folding />
         </state>
       </provider>
@@ -1318,13 +1370,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="18" selection-start="991" selection-end="991" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/XMLStorage/logic/service/CDService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="29" selection-start="213" selection-end="235" vertical-scroll-proportion="0.1870187">
@@ -1334,7 +1379,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/XMLStorage/logic/service/impl/CDServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="79" selection-start="2824" selection-end="2824" vertical-scroll-proportion="0.579758">
+        <state line="77" column="79" selection-start="2824" selection-end="2824" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="4" selection-start="869" selection-end="886" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/freeMarker/pages/index.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="72" column="0" selection-start="2335" selection-end="2335" vertical-scroll-proportion="-29.384615">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="9" selection-start="153" selection-end="153" vertical-scroll-proportion="0.03740374">
           <folding />
         </state>
       </provider>

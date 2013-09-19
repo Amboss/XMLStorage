@@ -50,6 +50,7 @@
         <div class="span5">
             <h3>Back-end</h3>
             <ul>
+                <li>Tomcat 7</li>
                 <li>JDK 1.7</li>
                 <li>Spring(Core, MVC)</li>
                 <li>STax parser</li>

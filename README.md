@@ -25,6 +25,7 @@
 
 <h3>Back-end</h3>
 <ul>
+    <li>Tomcat 7</li>
     <li>JDK 1.7</li>
     <li>Spring(Core, MVC)</li>
     <li>STax parser</li>
@@ -42,8 +43,8 @@
 
 <h2>Project URL: /XMLStorage/index.html</h2>
 
-<span>As it was mentioned in the above task project is designated to hold XML file in place of Data Base. Back-end
-functionality of application, represented by the "XMLStorage.logic" catalog, contain CDModel service and upload validator.
+<span>As it was mentioned in the above task, project is designated to hold XML file in place of Data Base. Back-end
+ functionality of application, represented by the "XMLStorage.logic" catalog, contain CDModel service and upload validator.
 </br>
 The main to methods, that handel's application functionality, are supporting parsing from XML - for a view page and
   making search of similarities and storage of new uploaded info.</span>
